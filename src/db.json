@@ -1,0 +1,40 @@
+{
+  "buildings" : [
+      {
+      "name" : "Traugutta",
+      "street" : "Traugutta",
+      "number" : "38a",
+      "flat" : "51",
+      "ro0ms" : "2",
+      "area" : "35 m2",
+      "tenant" : {
+        "name": "Filip Burdacki",
+        "phone": "609154861",
+        "email": "filip.burdacki@gmail.com",
+        "pesel" : "88112300543"
+      },
+      "startDate" : "01.09.2017",
+      "expiringDate" : "31.08.2018",
+      "rent" : "1500 zł",
+      "service" : "260 zł"
+    },
+    {
+      "name" : "Słowiańska",
+      "street" : "Słowiańska",
+      "number" : "36",
+      "flat" : "12",
+      "rooms" : "2",
+      "area" : "45 m2",
+      "tenant" : {
+        "name1": "Krzysztof Zieliński",
+        "phone1": "605760890",
+        "email1": "zielinski.k@gmail.com",
+        "pesel" : "79040200671"
+      },
+      "startDate" : "01.03.2018",
+      "expiringDate" : "28.02.2019",
+      "rent" : "1700 zł",
+      "service" : "350 zł"
+    }
+  ]
+}
