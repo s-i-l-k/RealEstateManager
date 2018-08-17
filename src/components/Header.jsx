@@ -2,13 +2,9 @@ import React from 'react';
 
 const Header = ({children}) => {
     return (
-        <div>
-            <div>
-                logo
-            </div>
-            <div>
-                menu
-            </div>
+        <div className='header'>
+            <div className='logo'></div>
+            <div className='menu'></div>
         </div>
     )
 };

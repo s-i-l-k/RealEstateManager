@@ -1,3 +1,8 @@
+$largePhone: "(min-width: 576px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 1023px)";
+$desktop: "(min-width: 1024px) and (max-width: 1199px)";
+$largeDesktop: "(min-width: 1200px)";
+
 * {
   margin: 0;
   padding: 0;
@@ -6,4 +11,60 @@
 body {
   background-color: lightgrey;
   font-family: 'Fira Sans', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  .logo {
+    width: 15vw;
+    background-image: url("../images/home.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .menu {
+    width: 15vw;
+    background-image: url("../images/menu.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  @media #{$largePhone}, #{$tablet}, #{$desktop}, #{$largeDesktop} {
+    flex-direction: row;
+    align-content:	flex-start;
+  }
+  :nth-child(2).box {
+    background-image: url("../images/buildings.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  :nth-child(3).box {
+    background-image: url("../images/tenants.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  :nth-child(4).box {
+    background-image: url("../images/vendors.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .box {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media #{$largePhone} {
+      height: 50vh;
+      flex-grow: 1;
+    }
+    h2 {
+      color: white;
+    }
+  }
 }
