@@ -7,7 +7,6 @@ body {
   font-family: 'Fira Sans', sans-serif; }
 
 .header {
-  opacity: 1;
   display: flex;
   justify-content: space-between;
   height: 10vh; }
@@ -21,6 +20,12 @@ body {
     background-image: url(images/menu.png);
     background-size: contain;
     background-repeat: no-repeat; }
+  .header .menu2 {
+    width: 15vw;
+    background-image: url(images/menuClose.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-self: right; }
 
 .container {
   display: flex;
@@ -30,16 +35,28 @@ body {
     .container {
       flex-direction: row;
       align-content: flex-start; } }
-  .container :nth-child(2).box {
+  .container .image1 {
     background-image: url(images/buildings.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
-  .container :nth-child(3).box {
+  .container .image2 {
     background-image: url(images/tenants.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
-  .container :nth-child(4).box {
+  .container .image3 {
     background-image: url(images/vendors.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .container .image4 {
+    background-image: url(images/payment.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .container .image5 {
+    background-image: url(images/alert.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .container .image6 {
+    background-image: url(images/todo.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
   .container .box {
@@ -52,5 +69,15 @@ body {
         height: 50vh;
         flex-grow: 1; } }
     .container .box h2 {
-      color: dimgrey; }
+      color: white; }
+  .container .slideMenu {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .container .dark {
+    background-color: dimgrey;
+    box-sizing: border-box;
+    border-bottom: 1px solid white;
+    color: white; }
 
