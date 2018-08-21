@@ -20,12 +20,16 @@ class Estates extends React.Component {
         {this.props.history.push('/form/estates')};
     }
 
+    editBuilding = (event) => {
+        {this.props.history.push('/form/estates/' + event.target.id)}
+    }
+
 
     render() {
         return (
             <div>
                 {this.state.buildings.map(building => {
-                    return <BuildingCard key={ building.id } building={ building }/>
+                    return <BuildingCard key={ building.id } building={ building } onClick={(e) => this.editBuilding(e)}/>
                 })}
                 <AddButton onClick={() => this.handleClick()}/>
             </div>

@@ -5,6 +5,7 @@ import Estates from './Estates.jsx';
 import Tenants from './Tenants.jsx';
 import NotFound from './NotFound.jsx';
 import AddForm from "./AddForm.jsx";
+import Payments from "./Payments.jsx";
 
 class App extends React.Component {
     render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
                     <Route path='/tenants' component={Tenants}/>
                     <Route path='/form/:type/:id' component={AddForm}/>
                     <Route path='/form/:type' component={AddForm}/>
+                    <Route path='/payments' component={Payments}/>
                     <Route component={NotFound}/>
                 </Switch>
             </HashRouter>

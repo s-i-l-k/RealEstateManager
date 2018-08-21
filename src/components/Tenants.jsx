@@ -20,11 +20,15 @@ class Tenants extends React.Component {
         {this.props.history.push('/form/tenants')}
     }
 
+    editTenant = (event) => {
+        {this.props.history.push('/form/tenants/' + event.target.id)}
+    }
+
     render() {
         return (
             <div>
                 {this.state.tenants.map(tenant => {
-                    return <TenantCard key={ tenant.id} tenant={ tenant }/>
+                    return <TenantCard key={ tenant.id} tenant={ tenant } onClick={(e) => this.editTenant(e)}/>
                 })}
                 <AddButton onClick={() => this.handleClick()}/>
             </div>

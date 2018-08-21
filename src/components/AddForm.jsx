@@ -143,7 +143,7 @@ class FullForm extends React.Component {
                         <input type="text" value={this.state.expiringDate} placeholder="Data zakończenia umowy" onChange={this.handleExpiringDateChange}/>
                         <input type="number" value={this.state.rent} placeholder="Czynsz" onChange={this.handleRentChange}/>
                         <input type="number" value={this.state.service} placeholder="Koszty eksploatacyjne" onChange={this.handleServiceChange}/>
-                        <input type="number" value={this.state.dayOfPayment} placeholder="Dzień płatności" onChange={this.handleDayofPaymentChange}/>
+                        <input type="number" value={this.state.dayOfPayment} placeholder="Dzień płatności" onChange={this.handleDayOfPaymentChange}/>
                     </label>
                         <input type="submit" onClick={this.check}/>
                 </form>
