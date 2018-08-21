@@ -7,7 +7,7 @@ module.exports = function(env) {
     const isDev = env && env.dev ? true : false;
     console.log(isDev, 'isDev');
     const config = {
-        entry: "./src/main.jsx",
+        entry: ["whatwg-fetch", "./src/main.jsx"],
         output: {
             filename: "out.js",
             path: path.resolve(__dirname, "docs")

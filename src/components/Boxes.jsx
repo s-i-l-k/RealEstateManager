@@ -1,6 +1,8 @@
+
 import React from 'react';
 import Header from './Header.jsx';
 import Header2 from './Header2.jsx';
+import {NavLink} from 'react-router-dom';
 
 class Boxes extends React.Component {
 
@@ -29,11 +31,13 @@ class Boxes extends React.Component {
             return (
                 <div className='container'>
                     <Header onClick={this.showMenu}/>
-                    {this.props.title.map((e,i) => {
+                    {title.map((e,i) => {
                         return (
-                            <div className={['box', `image${i+1}`, 'blur'].join(" ")} key={i}>
-                                <h2>{e}</h2>
-                            </div>
+                            <NavLink key={i} to={e.url || ""}>
+                                <div className={['box', `image${i+1}`].join(" ")}>
+                                    <h2>{e.name}</h2>
+                                </div>
+                            </NavLink>
                         )
                     })
                     }
@@ -43,11 +47,13 @@ class Boxes extends React.Component {
             return (
                 <div className='container'>
                     <Header2 onClick={this.hideMenu}/>
-                    {this.props.title.map((e,i) => {
+                    {title.map((e,i) => {
                         return (
-                            <div className={['slideMenu', `dark`].join(" ")} key={i}>
-                                <h2>{e}</h2>
-                            </div>
+                            <NavLink key={i} to={e.url || ""}>
+                                <div className={['slideMenu', 'dark'].join(" ")}>
+                                    <h2>{e.name}</h2>
+                                </div>
+                            </NavLink>
                         )
                     })
                     }
@@ -56,5 +62,26 @@ class Boxes extends React.Component {
         }
     }
 };
+
+const title = [{
+    name: 'Nieruchomości',
+    url: '/estates'
+}, {
+    name: 'Najemcy',
+    url: '/tenants'
+}, {
+    name: 'Wykonawcy',
+    url: '/vendors'
+}, {
+    name: 'Płatności',
+    url: '/payments'
+}, {
+    name: 'Alerty',
+    url: '/alerts'
+}, {
+    name: 'Do zrobienia',
+    url: '/todo'
+}];
+
 
 export default Boxes;
