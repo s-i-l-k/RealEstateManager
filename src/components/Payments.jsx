@@ -6,7 +6,12 @@ class Payments extends React.Component {
         this.state = {
             date: new Date,
             buildings: [],
+            daysInMonths: ""
         }
+    }
+
+    daysInMonths = (month, year) => {
+        return new Date(year, month, 0).getDate();
     }
 
     componentDidMount() {
@@ -19,7 +24,7 @@ class Payments extends React.Component {
         return (
             <div>
                 {this.state.buildings.map((building => {
-                    return <IsPaid key={building.id} building={building} month={this.state.date.getMonth() +1}/>
+                    return <IsPaid key={building.id} building={building} month={this.state.date.getMonth() +1} days={this.daysInMonths(this.state.date.getMonth() +1, this.state.date.getFullYear())} today={this.state.date.getDate()}/>
                 }))}
             </div>
         )
@@ -30,20 +35,41 @@ class IsPaid extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            late: true
         }
     }
 
-    handleCheck = (event) => {
+    handleCheck = () => {
         this.setState({
             checked: this.state.checked ? false : true
-        })
+        });
+        this.isLate();
+    }
+
+    isLate = () => {
+        if(Number(this.props.building.dayOfPayment) < Number(this.props.today) && this.state.checked === false) {
+            this.setState({
+                late: false
+            });
+        } else {
+            this.setState({
+                late: true
+            });
+        }
     }
 
     render() {
+        let info;
+        if(this.state.late) {
+            info = <div>Termin płatności minął {Math.abs(Number(this.props.building.dayOfPayment) - Number(this.props.today))} dni temu!</div>
+        } else {
+            info = <div>Termin płatności mija za {Number(this.props.building.dayOfPayment) + (Number(this.props.days) - Number(this.props.today))} dni</div>
+        }
+
         return (
             <form>
-                <p>Dla Nieruchomości {this.props.building.name} termin płatności upływa {this.props.building.dayOfPayment}.0{this.props.month}.</p>
+                {info}
                 <label>Czy wpłynęła płatność za miesiąc {this.props.month} ?
                     <input type="checkbox" value={this.state.checked} onChange={this.handleCheck}></input>
                 </label>
@@ -52,6 +78,5 @@ class IsPaid extends React.Component {
     }
 }
 
-export default Payments;
 
-// {this.state.date.getDate()}
+export default Payments;
