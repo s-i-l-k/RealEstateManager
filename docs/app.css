@@ -9,7 +9,8 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  height: 10vh; }
+  height: 10vh;
+  width: 100vw; }
   .header .logo {
     width: 15vw;
     background-image: url(images/home.png);
@@ -90,4 +91,12 @@ body {
   cursor: pointer;
   width: 10vw;
   height: 8vh; }
+
+.checked {
+  background-image: url(images/form_ok.jpg);
+  width: 5vw;
+  height: 5vh;
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat; }
 
