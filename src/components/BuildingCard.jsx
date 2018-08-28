@@ -9,8 +9,9 @@ class BuildingCard extends React.Component {
     render() {
         const {building} = this.props;
         return (
-            <div>
+            <div className="card">
                 <h2>{ building.name }</h2>
+                <hr/>
                 <p>adres: {building.street} {building.number} / {building.flat}</p>
                 <p>powierchnia: {building.area} m2</p>
                 <p>l.pokoi: {building.rooms}</p>

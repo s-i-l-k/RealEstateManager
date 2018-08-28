@@ -6,6 +6,12 @@ body {
   background-color: lightgrey;
   font-family: 'Fira Sans', sans-serif; }
 
+.sticky {
+  position: fixed; }
+
+.sticky + .header {
+  padding-top: 10vh; }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -91,4 +97,44 @@ body {
   cursor: pointer;
   width: 10vw;
   height: 8vh; }
+
+.card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 128, 0.5);
+  width: 75vw;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 2vh;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column; }
+  .card hr {
+    background-color: mediumseagreen;
+    width: 40vw;
+    height: 2px;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .card p {
+    color: grey;
+    font-size: 18px; }
+  .card a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    transition: 1s; }
+    .card a:hover {
+      color: mediumseagreen; }
+  .card button {
+    border: none;
+    outline: 0;
+    align-self: center;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px; }
 

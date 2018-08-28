@@ -114,3 +114,49 @@ body {
     width: 10vw;
     height: 8vh;
 }
+
+.card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 128, 0.5);
+  width: 75vw;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 2vh;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  hr {
+    background-color: mediumseagreen;
+    width: 40vw;
+    height: 2px;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  p {
+    color: grey;
+    font-size: 18px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    transition: 1s;
+    &:hover {
+      color: mediumseagreen;
+    }
+  }
+  button {
+    border: none;
+    outline: 0;
+    align-self: center;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+}

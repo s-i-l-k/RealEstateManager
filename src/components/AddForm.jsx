@@ -14,6 +14,8 @@ class AddForm extends React.Component {
             )
         } else if (this.props.match.params.type === "tenants") {
             return <TenantForm id={ this.props.match.params.id }/>
+        } else if (this.props.match.params.type === "vendors") {
+            return <VendorForm id={ this.props.match.params.id }/>
         }
     }
 }
@@ -230,6 +232,84 @@ class TenantForm extends React.Component {
                     <label>
                         Pesel
                         <input type="number" value={this.state.pesel} onChange={this.handlePeselChange}></input><br/>
+                    </label>
+                    <input type="submit" onClick={this.check}/>
+                </form>
+            </div>
+        )
+    }
+}
+
+class VendorForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            phone: '',
+            email: ''
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.id) {
+            fetch('http://localhost:3000/vendors/' + this.props.id)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState(data)
+                })
+        }
+    }
+
+    handleNameChange = (event) => {
+        this.setState({name: event.target.value})
+    }
+
+    handlePhoneChange = (event) => {
+        this.setState({phone: event.target.value})
+    }
+
+    handleEmailChange = (event) => {
+        this.setState({email: event.target.value})
+    }
+
+
+    check = (e) => {
+        console.log('checking');
+        e.preventDefault();
+        this.send();
+    }
+
+    send = () => {
+        const data = this.state;
+
+        fetch('http://localhost:3000/vendors' + (this.props.id ? `/${this.props.id}` : ""), {
+            method : this.props.id ? "PUT" : 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(resp => resp.json())
+            .then( data => { console.log(data);});
+    }
+
+    render() {
+
+        return (
+            <div>
+                <form>
+                    <label>
+                        Imię i nazwisko
+                        <input type="text" value={this.state.name} onChange={this.handleNameChange}/><br/>
+                    </label>
+                    <label>
+                        Telefon
+                        <input type="number" value={this.state.phone} onChange={this.handlePhoneChange}></input><br/>
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
                     </label>
                     <input type="submit" onClick={this.check}/>
                 </form>
