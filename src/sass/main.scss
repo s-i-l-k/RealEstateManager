@@ -9,7 +9,7 @@ $largeDesktop: "(min-width: 1200px)";
 }
 
 body {
-  background-color: #b3c2bf;
+  background-color: #e9ece5;
   font-family: 'Fira Sans', sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
   height: 10vh;
   width: 100vw;
   position: fixed;
-  background-color: #b3c2bf;
+  background-color: #e9ece5;
   .logo {
     width: 15vw;
     background-image: url("../images/home.png");
@@ -113,16 +113,19 @@ body {
 
 .addButton {
     background-image: url("../images/add.png");
+    background-color: #e9ece5;
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
     width: 10vw;
     height: 8vh;
+    align-self: flex-end;
+    border: 0;
 }
 
 .card {
-  background-color: #e9ece5;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 128, 0.5);
+  background-color: #b3c2bf;
+  box-shadow: 0 4px 8px 0 #3b3a36;
   width: 75vw;
   margin: auto;
   text-align: center;
@@ -131,38 +134,61 @@ body {
   overflow-wrap: break-word;
   display: flex;
   flex-direction: column;
+  border-radius: 5%;
   hr {
-    background-color: #c0dfd9;
+    border: 2px solid #c0dfd9;
     width: 40vw;
-    height: 2px;
     align-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
   }
   p {
-    color: grey;
+    color: black;
     font-size: 18px;
   }
   a {
     text-decoration: none;
     font-size: 22px;
-    color: black;
-    transition: 1s;
+    color: white;
     &:hover {
       color: #c0dfd9;
-      transform: scale(1.1)
+      font-weight: bold;
     }
   }
-  button {
-    border: none;
-    outline: 0;
-    align-self: center;
-    padding: 8px;
-    color: white;
-    background-color: black;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
+  .cardbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    button {
+      border: none;
+      outline: 0;
+      align-self: center;
+      padding: 3px;
+      color: white;
+      background-color: black;
+      text-align: center;
+      cursor: pointer;
+      font-size: 12px;
+      width: 33.33%;
+      text-align: center;
+      text-transform: uppercase;
+      &:hover {
+        color: #c0dfd9;
+        font-weight: bold;
+      }
+    }
+    .mainbtn {
+      width: 50%;
+      background-color: #3b3a36;
+    }
+  }
+}
+
+.plain {
+  text-decoration: none;
+  h2:hover {
+    color: #c0dfd9;
+    transform: scale(1.1);
   }
 }

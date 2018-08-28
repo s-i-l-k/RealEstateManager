@@ -38,7 +38,7 @@ class Header extends React.Component {
                     <div className='forFixed'>
                     {title.map((e,i) => {
                         return (
-                            <NavLink key={i} to={e.url || ""} onClick={this.showHideMenu}>
+                            <NavLink key={i} to={e.url || ""} onClick={this.showHideMenu} className="plain">
                                 <div className={['slideMenu', 'dark'].join(" ")}>
                                     <h2>{e.name}</h2>
                                 </div>

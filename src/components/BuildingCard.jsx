@@ -19,11 +19,13 @@ class BuildingCard extends React.Component {
                 <p>koniec umowy: {building.expiringDate}</p>
                 <p>data płatności: do {building.dayOfPayment} każdego miesiąca</p>
                 <p>czynsz: {building.rent} zł + koszty eksploatacyjne: {building.service} zł</p>
-                <button onClick={this.props.onClick} id={building.id}>Edytuj</button>
-                <button>Najemcy</button>
-                <button>Płatności</button>
-                <button>Alerty</button>
-                <button>Do zrobienia</button>
+                <div className="cardbtn">
+                    <button onClick={this.props.onClick} id={building.id} className="mainbtn">Edytuj</button>
+                    <button className="mainbtn">Usuń</button>
+                    <button>Najemcy</button>
+                    <button>Alerty</button>
+                    <button>Do zrobienia</button>
+                </div>
             </div>
         )
     }

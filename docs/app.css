@@ -3,7 +3,7 @@
   padding: 0; }
 
 body {
-  background-color: #b3c2bf;
+  background-color: #e9ece5;
   font-family: 'Fira Sans', sans-serif; }
 
 .header {
@@ -12,7 +12,7 @@ body {
   height: 10vh;
   width: 100vw;
   position: fixed;
-  background-color: #b3c2bf; }
+  background-color: #e9ece5; }
   .header .logo {
     width: 15vw;
     background-image: url(images/home.png);
@@ -90,15 +90,18 @@ body {
 
 .addButton {
   background-image: url(images/add.png);
+  background-color: #e9ece5;
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
   width: 10vw;
-  height: 8vh; }
+  height: 8vh;
+  align-self: flex-end;
+  border: 0; }
 
 .card {
-  background-color: #e9ece5;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 128, 0.5);
+  background-color: #b3c2bf;
+  box-shadow: 0 4px 8px 0 #3b3a36;
   width: 75vw;
   margin: auto;
   text-align: center;
@@ -106,34 +109,52 @@ body {
   margin-bottom: 2vh;
   overflow-wrap: break-word;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  border-radius: 5%; }
   .card hr {
-    background-color: #c0dfd9;
+    border: 2px solid #c0dfd9;
     width: 40vw;
-    height: 2px;
     align-self: center;
     margin-top: 10px;
     margin-bottom: 10px; }
   .card p {
-    color: grey;
+    color: black;
     font-size: 18px; }
   .card a {
     text-decoration: none;
     font-size: 22px;
-    color: black;
-    transition: 1s; }
+    color: white; }
     .card a:hover {
       color: #c0dfd9;
-      transform: scale(1.1); }
-  .card button {
-    border: none;
-    outline: 0;
-    align-self: center;
-    padding: 8px;
-    color: white;
-    background-color: black;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px; }
+      font-weight: bold; }
+  .card .cardbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; }
+    .card .cardbtn button {
+      border: none;
+      outline: 0;
+      align-self: center;
+      padding: 3px;
+      color: white;
+      background-color: black;
+      text-align: center;
+      cursor: pointer;
+      font-size: 12px;
+      width: 33.33%;
+      text-align: center;
+      text-transform: uppercase; }
+      .card .cardbtn button:hover {
+        color: #c0dfd9;
+        font-weight: bold; }
+    .card .cardbtn .mainbtn {
+      width: 50%;
+      background-color: #3b3a36; }
+
+.plain {
+  text-decoration: none; }
+  .plain h2:hover {
+    color: #c0dfd9;
+    transform: scale(1.1); }
 

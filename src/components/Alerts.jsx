@@ -7,7 +7,7 @@ class Alerts extends React.Component {
 
     render() {
         return (
-            <div>Alert!</div>
+            <div className={["container", "forFixed"].join(" ")}>Alert!</div>
         )
     }
 }

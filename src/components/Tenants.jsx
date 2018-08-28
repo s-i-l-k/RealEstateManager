@@ -26,7 +26,7 @@ class Tenants extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className={["container", "forFixed"].join(" ")}>
                 {this.state.tenants.map(tenant => {
                     return <TenantCard key={ tenant.id} tenant={ tenant } onClick={(e) => this.editTenant(e)}/>
                 })}

@@ -8,7 +8,7 @@ class Boxes extends React.Component {
                 <div className={['container', 'forFixed'].join(" ")}>
                     {title.map((e,i) => {
                         return (
-                            <NavLink key={i} to={e.url || ""}>
+                            <NavLink key={i} to={e.url || ""} className="plain">
                                 <div className={['box', `image${i+1}`].join(" ")}>
                                     <h2>{e.name}</h2>
                                 </div>

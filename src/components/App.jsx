@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter, Route, Link, Switch, NavLink} from 'react-router-dom';
+import {HashRouter, Route, Switch} from 'react-router-dom';
 import Boxes from './Boxes.jsx';
 import Estates from './Estates.jsx';
 import Tenants from './Tenants.jsx';

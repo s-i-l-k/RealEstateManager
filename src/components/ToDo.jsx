@@ -40,7 +40,7 @@ class ToDoList extends React.Component{
                 onDone={this.handleItemDone}
             />
         });
-        return <ul>
+        return <ul className='forFixed'>
             {items}
         </ul>;
     }

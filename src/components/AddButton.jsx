@@ -1,7 +1,9 @@
 import React from 'react';
 
 const AddButton = (props) => (
-    <button className='addButton' onClick={props.onClick}></button>
+    <div className='container'>
+        <button className='addButton' onClick={props.onClick}></button>
+    </div>
 );
 
 export default AddButton;

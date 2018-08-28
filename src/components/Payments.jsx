@@ -22,7 +22,7 @@ class Payments extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={["container", "forFixed"].join(" ")}>
                 {this.state.buildings.map((building => {
                     return <IsPaid key={building.id} building={building} day={this.state.date.getDate()} month={this.state.date.getMonth() +1} days={this.daysInMonths(this.state.date.getMonth() +1, this.state.date.getFullYear())} year={this.state.date.getFullYear()} today={this.state.date.toLocaleDateString()}/>
                 }))}

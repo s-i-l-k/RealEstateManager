@@ -8,14 +8,22 @@ class AddForm extends React.Component {
     render() {
         if (this.props.match.params.type === "estates") {
             return (
-                <div>
+                <div className={["container", "forFixed"].join(" ")}>
                     <FullForm id={ this.props.match.params.id }/>
                 </div>
             )
         } else if (this.props.match.params.type === "tenants") {
-            return <TenantForm id={ this.props.match.params.id }/>
+            return (
+                <div className={["container", "forFixed"].join(" ")}>
+                    <TenantForm id={ this.props.match.params.id }/>
+                </div>
+            )
         } else if (this.props.match.params.type === "vendors") {
-            return <VendorForm id={ this.props.match.params.id }/>
+            return (
+                <div className={["container", "forFixed"].join(" ")}>
+                    <VendorForm id={ this.props.match.params.id }/>
+                </div>
+            )
         }
     }
 }
@@ -120,6 +128,7 @@ class FullForm extends React.Component {
 
         return (
             <div>
+                <h3>NOWA NIERUCHOMOŚĆ</h3>
                 <form>
                     <label>
                         Nazwa nieruchomości
@@ -216,6 +225,7 @@ class TenantForm extends React.Component {
 
         return (
             <div>
+                <h3>NOWY NAJEMCA</h3>
                 <form>
                     <label>
                         Imię i nazwisko
@@ -298,6 +308,7 @@ class VendorForm extends React.Component {
 
         return (
             <div>
+                <h3>NOWY WYKONAWCA</h3>
                 <form>
                     <label>
                         Imię i nazwisko

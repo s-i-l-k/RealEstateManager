@@ -14,11 +14,10 @@ class VendorCard extends React.Component {
                     <hr/>
                     <p>Telefon: <a href={`tel:${vendor.phone} sms:${vendor.phone}`}>{vendor.phone}</a></p>
                     <p>E-mail: <a href={`tel:${vendor.email}`}>{vendor.email}</a></p>
-                    <button onClick={this.props.onClick} id={vendor.id}>Edytuj</button>
-                    <button>Nieruchomości</button>
-                    <button>Płatności</button>
-                    <button>Alerty</button>
-                    <button>Do zrobienia</button>
+                    <div className="cardbtn">
+                        <button onClick={this.props.onClick} id={vendor.id} className="mainbtn">Edytuj</button>
+                        <button className="mainbtn">Usuń</button>
+                    </div>
                 </div>
         )
     }

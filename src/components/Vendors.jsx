@@ -26,7 +26,7 @@ class Tenants extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={["container", "forFixed"].join(" ")}>
                 {this.state.vendors.map(vendor => {
                     return <VendorCard key={ vendor.id} vendor={ vendor } onClick={(e) => this.editVendor(e)}/>
                 })}
