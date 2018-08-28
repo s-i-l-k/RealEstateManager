@@ -20,9 +20,12 @@ class Header extends React.Component {
     render() {
         if(this.state.visible) {
             return (
-                <div className='header'>
-                    <div className='logo'></div>
-                    <div className='menu' onClick={this.showHideMenu}></div>
+                <div>
+                    <div className='header'>
+                        <div className='logo'></div>
+                        <div className='menu' onClick={this.showHideMenu}></div>
+                    </div>
+                    {this.props.children}
                 </div>
             )
         } else {
@@ -32,6 +35,7 @@ class Header extends React.Component {
                         <div className='logo'></div>
                         <div className='menu2' onClick={this.showHideMenu}></div>
                     </div>
+                    <div className='forFixed'>
                     {title.map((e,i) => {
                         return (
                             <NavLink key={i} to={e.url || ""} onClick={this.showHideMenu}>
@@ -42,6 +46,8 @@ class Header extends React.Component {
                         )
                     })
                     }
+                    </div>
+                    {this.props.children}
                 </div>
             )
         }
