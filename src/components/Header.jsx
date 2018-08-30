@@ -22,7 +22,7 @@ class Header extends React.Component {
             return (
                 <div>
                     <div className='header'>
-                        <div className='logo'></div>
+                        <NavLink to={'/'} className='logo'></NavLink>
                         <div className='menu' onClick={this.showHideMenu}></div>
                     </div>
                     {this.props.children}
@@ -32,7 +32,7 @@ class Header extends React.Component {
             return (
                 <div className='container'>
                     <div className='header'>
-                        <div className='logo'></div>
+                        <NavLink to={'/'} className='logo'></NavLink>
                         <div className='menu2' onClick={this.showHideMenu}></div>
                     </div>
                     <div className='forFixed'>
@@ -66,9 +66,6 @@ const title = [{
 }, {
     name: 'Płatności',
     url: '/payments'
-}, {
-    name: 'Alerty',
-    url: '/alerts'
 }, {
     name: 'Do zrobienia',
     url: '/todo'

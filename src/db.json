@@ -43,13 +43,6 @@
       "phone": "605760890",
       "email": "zielinski.k@gmail.com",
       "pesel": "79040200671"
-    },
-    {
-      "name": "Magdalena Jasińska",
-      "phone": "55",
-      "email": "hufyu@wp.pl",
-      "pesel": "555",
-      "id": 3
     }
   ],
   "vendors": [
@@ -59,7 +52,5 @@
       "phone": "505870651",
       "email": "stasiu@gmail.com"
     }
-  ],
-  "tasks": [
   ]
 }

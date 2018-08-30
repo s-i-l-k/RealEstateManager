@@ -58,10 +58,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat; }
   .container .image5 {
-    background-image: url(images/alert.jpg);
-    background-size: cover;
-    background-repeat: no-repeat; }
-  .container .image6 {
     background-image: url(images/todo.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
@@ -78,7 +74,7 @@ body {
       color: white;
       text-shadow: 4px 0 10px #3b3a36; }
   .container .slideMenu {
-    height: 15vh;
+    height: 18vh;
     display: flex;
     justify-content: center;
     align-items: center; }

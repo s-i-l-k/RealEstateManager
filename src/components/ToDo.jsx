@@ -5,30 +5,23 @@ class ToDoList extends React.Component {
         super(props);
         this.state = {
             selectedOption: 1,
-            buildings:[]
+            buildings: []
         };
     }
     handleBuildingChange = (event) => {
-        console.log(event.target.value)
         this.setState({selectedOption: event.target.value});
-    };
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Została wybrana nieruchomość '
-            + this.state.selectedOption);
     };
 
     componentDidMount() {
         fetch('http://localhost:3000/buildings')
             .then(response => response.json())
-            .then(buildings => this.setState({ buildings }));
-    };
+            .then(buildings => this.setState({buildings}));
+    }
 
     render(){
         return (
             <div className="forFixed">
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     Wybierz nieruchomość:
                         {this.state.buildings.map((building, i) => {
                             return (
@@ -54,17 +47,6 @@ class ToDoForm extends React.Component{
         };
     }
 
-    componentDidMount() {
-        if (this.props.id) {
-            fetch('http://localhost:3000/tasks/' + this.props.id)
-                .then(response => response.json())
-                .then(data => {
-                    this.setState(data)
-                })
-        }
-
-    }
-
     onChange = (event) => {
         this.setState({ new: event.target.value });
     }
@@ -74,23 +56,7 @@ class ToDoForm extends React.Component{
         this.setState({
             new: '',
             tasks: [...this.state.tasks, this.state.new],
-        }, this.send);
-    }
-
-
-    send = () => {
-        const data = this.state;
-
-        fetch('http://localhost:3000/tasks', {
-            method : 'POST',
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(resp => resp.json())
-            .then( data => { console.log(data);});
+        });
     }
 
     handleItemDone = (title) => {
@@ -99,23 +65,8 @@ class ToDoForm extends React.Component{
         });
         this.setState({
             tasks: newItems
-        }, this.remove);
+        });
     };
-
-    remove = () => {
-        const data = this.state;
-
-        fetch('http://localhost:3000/tasks/' + this.props.id, {
-            method : 'DELETE',
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(resp => resp.json())
-            .then( data => { console.log(data);});
-    }
 
     render(){
         const items = this.state.tasks.map((item, i) => {
@@ -123,7 +74,7 @@ class ToDoForm extends React.Component{
                 key={i}
                 title={item}
                 onDone={this.handleItemDone}
-                id={this.props.id}
+                id={item.id}
             />
         });
         return (
@@ -135,6 +86,7 @@ class ToDoForm extends React.Component{
                 <ul>
                     {items}
                 </ul>
+                <button onClick={this.send}>Koniec na dziś</button>
             </div>
         )
     }
@@ -148,9 +100,11 @@ class ToDoItem extends React.Component{
     }
     render(){
         return (
-            <li><span>{this.props.title}</span>
-            <button onClick={this.handleDoneClick}>Zakończ</button>
-        </li>
+            <div>
+                <li><span>{this.props.title}</span>
+                    <button onClick={this.handleDoneClick}>Zakończ</button>
+                </li>
+            </div>
         )
     }
 }

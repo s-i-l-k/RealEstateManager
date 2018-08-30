@@ -34,9 +34,6 @@ const title = [{
     name: 'Płatności',
     url: '/payments'
 }, {
-    name: 'Alerty',
-    url: '/alerts'
-}, {
     name: 'Do zrobienia',
     url: '/todo'
 }];
