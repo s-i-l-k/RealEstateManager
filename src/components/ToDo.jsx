@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ToDoList extends React.Component {
+class ToDo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,71 +23,118 @@ class ToDoList extends React.Component {
             <div className="forFixed">
                 <form>
                     Wybierz nieruchomość:
-                        {this.state.buildings.map((building, i) => {
-                            return (
-                                <label key={i}>
-                                    <input type="radio" value={building.id} checked={this.state.selectedOption == building.id} onChange={this.handleBuildingChange}/>
-                                    {building.name}
-                                </label>
-                                )
-                            })}
+                    {this.state.buildings.map((building, i) => {
+                        return (
+                            <label key={i}>
+                                <input type="radio" value={building.id} checked={this.state.selectedOption == building.id} onChange={this.handleBuildingChange}/>
+                                {building.name}
+                            </label>
+                        )
+                    })}
                 </form>
-                <ToDoForm id={this.props.match.params.id}/>
+                <ToDoList id={this.props.match.params.id} selected={this.state.selectedOption}/>
             </div>
         )
     }
 }
 
-class ToDoForm extends React.Component{
-    constructor(props){
+class ToDoList extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            tasks: [],
-            new: ''
-        };
+            tasks: []
+        }
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/tasks')
+            .then(response => response.json())
+            .then(tasks => this.setState({ tasks }));
+    }
+
+    handleItemDone = (task) => {
+        const data = this.state;
+
+        fetch('http://localhost:3000/tasks/' + task.id, {
+            method : 'DELETE',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(resp => resp.json())
+            .then( data => { console.log(data);});
+    };
+
+    render() {
+        return (
+            <div> Dodaj zadanie:
+                <ToDoForm id={this.props.id} selected={this.props.selected}/>
+                <ul>
+                    {this.state.tasks.map((task, i) => {
+                        return <ToDoItem key={i} task={ task } onDone={this.handleItemDone}/>
+                    })}
+                </ul>
+            </div>
+        )
+    }
+}
+
+class ToDoForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            task: "",
+            selectedOption: ""
+        }
+
+    }
+
+    componentDidMount() {
+        if (this.props.id) {
+            fetch('http://localhost:3000/tasks/' + this.props.id)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState(data)
+                })
+        }
+
     }
 
     onChange = (event) => {
-        this.setState({ new: event.target.value });
+        this.setState({
+            task: event.target.value ,
+            selectedOption: this.props.selected
+        });
     }
 
     onSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            new: '',
-            tasks: [...this.state.tasks, this.state.new],
-        });
+        this.send();
     }
 
-    handleItemDone = (title) => {
-        const newItems = this.state.tasks.filter(item => {
-            return item !== title;
-        });
-        this.setState({
-            tasks: newItems
-        });
-    };
+    send = () => {
+        const data = this.state;
 
-    render(){
-        const items = this.state.tasks.map((item, i) => {
-            return <ToDoItem
-                key={i}
-                title={item}
-                onDone={this.handleItemDone}
-                id={item.id}
-            />
-        });
+        fetch('http://localhost:3000/tasks', {
+            method : 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(resp => resp.json())
+            .then( data => { console.log(data);});
+    }
+
+    render() {
         return (
-            <div>Dodaj zadanie:
-                <form onSubmit={this.onSubmit}>
-                    <input value={this.state.new} onChange={this.onChange} />
-                    <button>Dodaj</button>
-                </form>
-                <ul>
-                    {items}
-                </ul>
-                <button onClick={this.send}>Koniec na dziś</button>
-            </div>
+            <form onSubmit={this.onSubmit}>
+                <input value={this.state.task} onChange={this.onChange} />
+                <button>Dodaj</button>
+            </form>
         )
     }
 }
@@ -95,18 +142,16 @@ class ToDoForm extends React.Component{
 class ToDoItem extends React.Component{
     handleDoneClick = () => {
         if ( typeof this.props.onDone === 'function' ){
-            this.props.onDone(this.props.title);
+            this.props.onDone(this.props.task);
         }
     }
     render(){
         return (
-            <div>
-                <li><span>{this.props.title}</span>
+                <li><span>{this.props.task.task}</span>
                     <button onClick={this.handleDoneClick}>Zakończ</button>
                 </li>
-            </div>
         )
     }
 }
 
-export default ToDoList;
+export default ToDo;

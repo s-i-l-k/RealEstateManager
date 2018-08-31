@@ -8,7 +8,7 @@ import AddForm from "./AddForm.jsx";
 import Payments from "./Payments.jsx";
 import Header from "./Header.jsx";
 import Vendors from "./Vendors.jsx";
-import ToDoList from "./ToDo.jsx";
+import ToDo from "./ToDo.jsx";
 
 class App extends React.Component {
 
@@ -25,7 +25,7 @@ class App extends React.Component {
                         <Route path='/form/:type/:id' component={AddForm}/>
                         <Route path='/form/:type' component={AddForm}/>
                         <Route path='/payments' component={Payments}/>
-                        <Route path='/todo' component={ToDoList}/>
+                        <Route path='/todo' component={ToDo}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
