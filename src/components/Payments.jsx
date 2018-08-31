@@ -42,32 +42,7 @@ class IsPaid extends React.Component {
     }
 
     handleCheck = () => {
-        let month;
-        if(this.props.month + this.state.counter === 1) {
-            month = "styczeń";
-        } else if (this.props.month + this.state.counter === 2){
-            month = "luty";
-        } else if (this.props.month + this.state.counter === 3){
-            month = "marzec";
-        } else if (this.props.month + this.state.counter === 4){
-            month = "kwiecień";
-        } else if (this.props.month + this.state.counter === 5){
-            month = "maj";
-        } else if (this.props.month + this.state.counter === 6){
-            month = "czerwiec";
-        } else if (this.props.month + this.state.counter === 7){
-            month = "lipiec";
-        } else if (this.props.month + this.state.counter === 8){
-            month = "sierpień";
-        } else if (this.props.month + this.state.counter === 9){
-            month = "wrzesień";
-        } else if (this.props.month + this.state.counter === 10){
-            month = "październik";
-        } else if (this.props.month + this.state.counter === 11){
-            month = "listopad";
-        } else if (this.props.month + this.state.counter === 12){
-            month = "grudzień";
-        }
+        let month = monthsMap.get(this.props.month + this.state.counter);
 
         this.setState({
             arr: [...this.state.arr, month],
@@ -101,32 +76,7 @@ class IsPaid extends React.Component {
     }
 
     render() {
-        let nextMonth = this.props.month + this.state.counter;
-        if(this.props.month + this.state.counter === 1) {
-            nextMonth = "styczeń";
-        } else if (this.props.month + this.state.counter === 2){
-            nextMonth = "luty";
-        } else if (this.props.month + this.state.counter === 3){
-            nextMonth = "marzec";
-        } else if (this.props.month + this.state.counter === 4){
-            nextMonth = "kwiecień";
-        } else if (this.props.month + this.state.counter === 5){
-            nextMonth = "maj";
-        } else if (this.props.month + this.state.counter === 6){
-            nextMonth = "czerwiec";
-        } else if (this.props.month + this.state.counter === 7){
-            nextMonth = "lipiec";
-        } else if (this.props.month + this.state.counter === 8){
-            nextMonth = "sierpień";
-        } else if (this.props.month + this.state.counter === 9){
-            nextMonth = "wrzesień";
-        } else if (this.props.month + this.state.counter === 10){
-            nextMonth = "październik";
-        } else if (this.props.month + this.state.counter === 11){
-            nextMonth = "listopad";
-        } else if (this.props.month + this.state.counter === 12){
-            nextMonth = "grudzień";
-        }
+        let nextMonth = monthsMap.get(this.props.month + this.state.counter);
 
         if(this.state.late === false){
             return (
@@ -157,5 +107,8 @@ class IsPaid extends React.Component {
             }
     }
 }
+
+const monthsMap = new Map([[1,"styczeń"],[2,"luty"],[3,"marzec"],[4,"kwiecień"],[5,"maj"],[6,"czerwiec"],
+    [7,"lipiec"],[8,"sierpień"],[9,"wrzesień"],[10,"październik"],[11,"listopad"],[12,"grudzień"]]);
 
 export default Payments;
