@@ -4,7 +4,7 @@ class ToDo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: 1,
+            selectedOption: "",
             buildings: []
         };
     }
@@ -26,7 +26,7 @@ class ToDo extends React.Component {
                     {this.state.buildings.map((building, i) => {
                         return (
                             <label key={i}>
-                                <input type="radio" value={building.id} checked={this.state.selectedOption == building.id} onChange={this.handleBuildingChange}/>
+                                <input type="radio" value={building.name} checked={this.state.selectedOption == building.name} onChange={this.handleBuildingChange}/>
                                 {building.name}
                             </label>
                         )
@@ -147,9 +147,9 @@ class ToDoItem extends React.Component{
     }
     render(){
         return (
-                <li><span>{this.props.task.task}</span>
-                    <button onClick={this.handleDoneClick}>Zakończ</button>
-                </li>
+            <li><span>{this.props.task.task}</span> <span>{this.props.task.selectedOption}</span>
+                <button onClick={this.handleDoneClick}>Zakończ</button>
+            </li>
         )
     }
 }
