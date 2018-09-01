@@ -37,39 +37,53 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap; }
-  @media (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) {
+  @media (min-width: 768px) and (max-width: 1023px) {
     .container {
       flex-direction: row;
-      align-content: flex-start; } }
+      width: 100vw; } }
   .container .image1 {
     background-image: url(images/buildings.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container .image1 {
+        width: 33vw; } }
   .container .image2 {
     background-image: url(images/tenants.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container .image2 {
+        width: 33vw; } }
   .container .image3 {
     background-image: url(images/vendors.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container .image3 {
+        width: 33vw; } }
   .container .image4 {
     background-image: url(images/payment.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container .image4 {
+        width: 50vw; } }
   .container .image5 {
     background-image: url(images/todo.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container .image5 {
+        width: 50vw; } }
   .container .box {
     height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center; }
-    @media tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
       .container .box {
-        height: 50vh;
-        flex-grow: 1; } }
+        height: 45vh; } }
     .container .box h2 {
       color: white;
       text-shadow: 4px 0 10px #3b3a36; }
@@ -78,6 +92,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container .slideMenu {
+        flex-direction: row; } }
   .container .dark {
     background-color: #3b3a36;
     box-sizing: border-box;
@@ -111,9 +128,9 @@ body {
   .card hr {
     border: 2px solid mediumseagreen;
     width: 40vw;
-    align-self: center;
     margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    align-self: center; }
   .card p {
     color: black;
     font-size: 18px; }
@@ -126,20 +143,6 @@ body {
     .card a:hover {
       color: #c0dfd9;
       font-weight: bold; }
-  .card .greenCircle {
-    width: 30px;
-    height: 30px;
-    background-color: #b3c2bf;
-    border: 3px solid mediumseagreen;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 20px; }
-    .card .greenCircle h3 {
-      color: mediumseagreen;
-      line-height: 30px;
-      font-weight: bold;
-      text-align: center; }
   .card .cardbtn {
     display: flex;
     flex-direction: row;
@@ -228,7 +231,85 @@ body {
   background-position-y: 70%; }
 
 .payment {
-  color: #3b3a36; }
+  background-color: #b3c2bf;
+  box-shadow: 0 4px 8px 0 #3b3a36;
+  width: 75vw;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  border-radius: 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5vh; }
+  .payment hr {
+    border: 2px solid mediumseagreen;
+    width: 40vw;
+    margin-top: 10px;
+    margin-bottom: 10px; }
   .payment h2 {
     line-height: 30px; }
+  .payment p {
+    font-size: 16px; }
+    .payment p span {
+      color: red;
+      font-weight: bold;
+      font-size: 20px; }
+  .payment .paid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; }
+  .payment .paidItem {
+    color: white;
+    font-size: 16px;
+    padding: 1vw;
+    max-width: fit-content; }
+  .payment .confirmPayment {
+    font-size: 16px; }
+    .payment .confirmPayment span {
+      color: steelblue; }
+    .payment .confirmPayment .paidbtn {
+      background-color: mediumseagreen;
+      border: none;
+      border-radius: 12px;
+      padding: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      margin-left: 2vw;
+      font-size: 14px; }
+      .payment .confirmPayment .paidbtn:active {
+        background: #c0dfd9;
+        border: none; }
+
+.sendbtn {
+  background-color: steelblue;
+  border: none;
+  border-radius: 12px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-left: 2vw;
+  font-size: 14px;
+  margin-top: 2vh; }
+  .sendbtn:active {
+    background: #3b3a36;
+    color: white;
+    border: none; }
+
+.greenCircle {
+  width: 30px;
+  height: 30px;
+  background-color: #b3c2bf;
+  border: 3px solid mediumseagreen;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 20px; }
+  .greenCircle h3 {
+    color: mediumseagreen;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center; }
 

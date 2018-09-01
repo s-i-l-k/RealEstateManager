@@ -27,7 +27,7 @@ class Payments extends React.Component {
                 {this.state.buildings.map(((building, i) => {
                     return <IsPaid key={building.id} building={building} day={this.state.date.getDate()}
                                        month={this.state.date.getMonth() +1} days={this.daysInMonths(this.state.date.getMonth() +1, this.state.date.getFullYear())}
-                                       year={this.state.date.getFullYear()} today={this.state.date.toLocaleDateString()} id={building.id}/>
+                                       year={this.state.date.getFullYear()} today={this.state.date.getDate()} id={building.id}/>
                 }))}
             </div>
         )
@@ -59,7 +59,7 @@ class IsPaid extends React.Component {
                 })
         }
 
-        if(this.props.building.dayOfPayment + "." + this.props.month + "." + this.props.year < this.props.today) {
+        if(this.props.building.dayOfPayment < this.props.today) {
             this.setState({
                 late: true
             });
@@ -76,7 +76,7 @@ class IsPaid extends React.Component {
             return {
                 payment: newPayment,
                 counter: this.whatCounter(),
-                late: state.late === true ? false : state.late
+                late: state.late === true ? false : state.late,
             }
         });
     }
@@ -90,44 +90,51 @@ class IsPaid extends React.Component {
     }
 
     onItemSaved = (item) => {
-        console.log("@@@", item);
         savedPayment => this.setState({ payment: savedPayment })
     }
 
     render() {
         if (!this.state.payment) {
-            return <div>LOADING</div>;
+            return <div>loading...</div>;
         }
 
-        let nextMonth = monthsMap.get(this.props.month + this.state.counter);
+        let nextMonth = monthsMap.get(this.props.month + this.state.counter );
 
         if(this.state.late === false){
             return (
                 <div className="payment">
+                    <div className="greenCircle"><h3>{this.props.building.name.slice(0, 1)}</h3></div>
                     <h2>Płatności {this.props.building.name}</h2>
-                    <div>
+                    <hr/>
+                    <div className="paid">
                         {this.state.payment.arr.map((e, i) => {
-                                return <label key={i}>{e}
+                                return <label key={i} className="paidItem">{e}
                                     <input type="checkbox" checked disabled></input>
                                 </label>
                             }
                         )}
                     </div>
                     <br/>
-                    <label>Potwierdź płatność za miesiąc {nextMonth}
-                        <button onClick={this.handleCheck}>Zapłacono</button>
-                    </label>
+                    <div className="confirmPayment">
+                        <label>Potwierdź płatność za miesiąc <span>{nextMonth}</span>
+                            <button className="paidbtn" onClick={this.handleCheck}>Zapłacono</button>
+                        </label>
+                    </div>
                     <SendButton payment={this.state.payment} onSaved={ this.onItemSaved }/>
                 </div>
             )
         } else if (this.state.late){
                 return (
                     <div className="payment">
+                        <div className="greenCircle"><h3>{this.props.building.name.slice(0, 1)}</h3></div>
                         <h2>Płatności {this.props.building.name}</h2>
-                        <p>Opóźnienie {Math.abs(Number(this.props.day) - Number(this.props.building.dayOfPayment))} dni!</p>
-                        <label>Potwierdź płatność za miesiąc {nextMonth}
-                            <button onClick={this.handleCheck}>Zapłacono</button>
-                        </label>
+                        <hr/>
+                        <p>Opóźnienie <span>{Math.abs(Number(this.props.day) - Number(this.props.building.dayOfPayment))}</span> dni!</p>
+                        <div className="confirmPayment">
+                            <label>Potwierdź płatność za miesiąc <span>{nextMonth}</span>
+                                <button className="paidbtn" onClick={this.handleCheck}>Zapłacono</button>
+                            </label>
+                        </div>
                         <SendButton payment={this.state.payment} onSaved={ this.onItemSaved }/>
                     </div>
                 )
@@ -155,11 +162,12 @@ class SendButton extends React.Component {
     }
 
     render() {
-        return <button onClick={this.send}>Zapisz</button>
+        return <button className="sendbtn" onClick={this.send}>Zapisz</button>
     }
 }
 
 const monthsMap = new Map([[1,"styczeń"],[2,"luty"],[3,"marzec"],[4,"kwiecień"],[5,"maj"],[6,"czerwiec"],
     [7,"lipiec"],[8,"sierpień"],[9,"wrzesień"],[10,"październik"],[11,"listopad"],[12,"grudzień"]]);
+
 
 export default Payments;

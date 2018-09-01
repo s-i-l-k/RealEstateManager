@@ -25,7 +25,7 @@
       "expiringDate": "31.06.2019",
       "rent": "1800",
       "service": "700",
-      "dayOfPayment": "15",
+      "dayOfPayment": "1",
       "id": 2
     }
   ],
@@ -80,5 +80,15 @@
       "id": 2
     }
   ],
-  "payments": []
+  "payments": [
+    {
+      "arr": [
+        "wrzesień",
+        "październik",
+        "listopad"
+      ],
+      "buildingId": 1,
+      "id": 1
+    }
+  ]
 }

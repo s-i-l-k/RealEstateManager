@@ -47,43 +47,57 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  @media #{$tablet}, #{$desktop} {
+  @media (min-width: 768px) and (max-width: 1023px) {
     flex-direction: row;
-    align-content:	flex-start;
+    width: 100vw;
   }
   .image1 {
     background-image: url("../images/buildings.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 33vw;
+    }
   }
   .image2 {
     background-image: url("../images/tenants.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 33vw;
+    }
   }
   .image3 {
     background-image: url("../images/vendors.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 33vw;
+    }
   }
   .image4 {
     background-image: url("../images/payment.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 50vw;
+    }
   }
   .image5 {
     background-image: url("../images/todo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 50vw;
+    }
   }
   .box {
     height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    @media #{tablet} {
-      height: 50vh;
-      flex-grow: 1;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      height: 45vh;
     }
     h2 {
       color: white;
@@ -95,6 +109,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      flex-direction: row;
+    }
   }
   .dark {
     background-color: #3b3a36;
@@ -132,9 +149,9 @@ body {
   hr {
     border: 2px solid mediumseagreen;
     width: 40vw;
-    align-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    align-self: center;
   }
   p {
     color: black;
@@ -150,22 +167,6 @@ body {
     &:hover {
       color: #c0dfd9;
       font-weight: bold;
-    }
-  }
-  .greenCircle {
-    width: 30px;
-    height: 30px;
-    background-color: #b3c2bf;
-    border: 3px solid mediumseagreen;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    h3 {
-      color: mediumseagreen;
-      line-height: 30px;
-      font-weight: bold;
-      text-align: center;
     }
   }
   .cardbtn {
@@ -273,8 +274,99 @@ body {
 }
 
 .payment {
-  color: #3b3a36;
+  background-color: #b3c2bf;
+  box-shadow: 0 4px 8px 0 #3b3a36;
+  width: 75vw;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  border-radius: 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5vh;
+  hr {
+    border: 2px solid mediumseagreen;
+    width: 40vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   h2 {
     line-height: 30px;
+  }
+  p {
+    font-size: 16px;
+    span {
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  .paid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .paidItem {
+    color: white;
+    font-size: 16px;
+    padding: 1vw;
+    max-width: fit-content;
+  }
+  .confirmPayment {
+    font-size: 16px;
+    span {
+      color: steelblue;
+    }
+    .paidbtn {
+      background-color: mediumseagreen;
+      border: none;
+      border-radius: 12px;
+      padding: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      margin-left: 2vw;
+      font-size: 14px;
+      &:active {
+        background: #c0dfd9;
+        border: none;
+      }
+    }
+  }
+}
+
+.sendbtn {
+  background-color: steelblue;
+  border: none;
+  border-radius: 12px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-left: 2vw;
+  font-size: 14px;
+  margin-top: 2vh;
+  &:active {
+    background: #3b3a36;
+    color: white;
+    border: none;
+  }
+}
+
+.greenCircle {
+  width: 30px;
+  height: 30px;
+  background-color: #b3c2bf;
+  border: 3px solid mediumseagreen;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  h3 {
+    color: mediumseagreen;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
   }
 }
