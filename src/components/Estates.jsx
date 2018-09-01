@@ -28,6 +28,7 @@ class Estates extends React.Component {
     render() {
         return (
             <div className='forFixed'>
+                <div className="estateImg"></div>
                 {this.state.buildings.map(building => {
                     return <BuildingCard key={ building.id } building={ building } onClick={(e) => this.editBuilding(e)}/>
                 })}

@@ -15,7 +15,7 @@ class Payments extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/buildings')
+        fetch('/buildings')
             .then(response => response.json())
             .then(buildings => this.setState({ buildings }));
     }
@@ -37,18 +37,24 @@ class IsPaid extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            arr: [],
+            payment: null,
             late: false,
             counter: 0
         }
     }
 
     componentDidMount() {
-        if (this.props.id) {
-            fetch('http://localhost:3000/payments/' + this.props.id)
+        if (this.props.building) {
+            fetch('/payments/')
                 .then(response => response.json())
                 .then(data => {
-                    this.setState(data)
+                    const payment = data.find(payment => payment.buildingId === this.props.building.id);
+
+                    if (payment) {
+                        this.setState({ payment })
+                    } else {
+                        this.setState({ payment: { arr: [], buildingId: this.props.building.id } })
+                    }
                 })
         }
 
@@ -62,18 +68,16 @@ class IsPaid extends React.Component {
     handleCheck = () => {
         let month = monthsMap.get(this.props.month + this.state.counter);
 
-        this.setState({
-            arr: [...this.state.arr, month],
-            counter: this.whatCounter(),
-        }, this.isLate);
-    }
+        this.setState((state) => {
+            const newPayment = { ...state.payment };
+            newPayment.arr = [ ...state.payment.arr, month];
 
-    isLate = () => {
-        if(this.state.late) {
-            this.setState({
-                late: false
-            })
-        }
+            return {
+                payment: newPayment,
+                counter: this.whatCounter(),
+                late: state.late === true ? false : state.late
+            }
+        });
     }
 
     whatCounter = () => {
@@ -85,13 +89,17 @@ class IsPaid extends React.Component {
     }
 
     render() {
+        if (!this.state.payment) {
+            return <div>LOADING</div>;
+        }
+
         let nextMonth = monthsMap.get(this.props.month + this.state.counter);
 
         if(this.state.late === false){
             return (
                 <div>
                     <p>Płatności {this.props.building.name}</p>
-                    {this.state.arr.map((e, i) => {
+                    {this.state.payment.arr.map((e, i) => {
                             return <label key={i}>{e}
                                 <input type="checkbox" checked disabled></input>
                             </label>
@@ -101,7 +109,7 @@ class IsPaid extends React.Component {
                     <label>Potwierdź płatność za miesiąc {nextMonth}
                         <button onClick={this.handleCheck}>Zapłacono</button>
                     </label>
-                    <SendButton arr={this.state.arr} id={this.props.id} />
+                    <SendButton payment={this.state.payment} onSaved={ savedPayment => this.setState({ payment: savedPayment }) }/>
                 </div>
             )
         } else if (this.state.late){
@@ -112,7 +120,7 @@ class IsPaid extends React.Component {
                         <label>Potwierdź płatność za miesiąc {nextMonth}
                             <button onClick={this.handleCheck}>Zapłacono</button>
                         </label>
-                        <SendButton arr={this.state.arr} id={this.props.id} />
+                        <SendButton payment={this.state.payment} onSaved={ savedPayment => this.setState({ payment: savedPayment })}/>
                     </div>
                 )
             }
@@ -120,35 +128,23 @@ class IsPaid extends React.Component {
 }
 
 class SendButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            arr: []
-        }
-    }
-
-    update = () => {
-        this.setState({
-            arr: this.props.arr
-        }, this.send)
-    }
-
     send = () => {
-        const data = this.state;
-        fetch('http://localhost:3000/payments' + (this.props.id ? `/${this.props.id}` : ""),{
-            method : this.props.id ? "PUT" : 'POST',
+        const payment = this.props.payment;
+        fetch('/payments' + (payment.id ? `/${payment.id}` : ""),{
+            method : payment.id ? "PUT" : 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(payment)
         })
             .then(resp => resp.json())
-            .then( data => { console.log(data);})
+            .then(data => console.log(data))
+            .then( data => this.props.onSaved(data) )
     }
 
     render() {
-        return <button onClick={this.update}>Zapisz</button>
+        return <button onClick={this.send}>Zapisz</button>
     }
 }
 

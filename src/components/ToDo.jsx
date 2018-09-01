@@ -54,26 +54,44 @@ class ToDoList extends React.Component {
 
     handleItemDone = (task) => {
         const data = this.state;
-
-        fetch('http://localhost:3000/tasks/' + task.id, {
+        fetch('/tasks/' + task.id, {
             method : 'DELETE',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
                 "Accept": "application/json"
-            },
-            body: JSON.stringify(data)
+            }
         })
             .then(resp => resp.json())
-            .then( data => { console.log(data);});
+            .then( data => { console.log("@@@@", data);})
+            .then(() => this.taskRemove(task));
     };
+
+    taskAdd = (task) => {
+        this.setState((state) => {
+            return {
+                tasks: [...state.tasks, task]
+            }
+        })
+    }
+
+    taskRemove = ({ id }) => {
+
+        console.log('remove', id);
+
+        this.setState((state) => {
+            return {
+                tasks: state.tasks.filter((taskToFilter) => taskToFilter.id !== id)
+            }
+        })
+    }
 
     render() {
         return (
             <div> Dodaj zadanie:
-                <ToDoForm id={this.props.id} selected={this.props.selected}/>
+                <ToDoForm onTaskAdd={this.taskAdd} id={this.props.id} selected={this.props.selected}/>
                 <ul>
                     {this.state.tasks.map((task, i) => {
-                        return <ToDoItem key={i} task={ task } onDone={this.handleItemDone}/>
+                        return <ToDoItem key={i} task={ task } onDone={this.handleItemDone} />
                     })}
                 </ul>
             </div>
@@ -126,7 +144,8 @@ class ToDoForm extends React.Component {
             body: JSON.stringify(data)
         })
             .then(resp => resp.json())
-            .then( data => { console.log(data);});
+            .then((newTask) => this.props.onTaskAdd(newTask))
+            .then(() => this.setState({ task: "" }));
     }
 
     render() {
@@ -148,7 +167,7 @@ class ToDoItem extends React.Component{
     render(){
         return (
             <li><span>{this.props.task.task}</span> <span>{this.props.task.selectedOption}</span>
-                <button onClick={this.handleDoneClick}>Zakończ</button>
+                <button onClick={this.handleDoneClick} >Zakończ</button>
             </li>
         )
     }
