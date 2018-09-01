@@ -13,7 +13,7 @@ class ToDo extends React.Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:3000/buildings')
+        fetch('/buildings')
             .then(response => response.json())
             .then(buildings => this.setState({buildings}));
     }
@@ -21,6 +21,7 @@ class ToDo extends React.Component {
     render(){
         return (
             <div className="forFixed">
+                <div className="toDoImg"></div>
                 <form>
                     Wybierz nieruchomość:
                     {this.state.buildings.map((building, i) => {
@@ -47,7 +48,7 @@ class ToDoList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/tasks')
+        fetch('/tasks')
             .then(response => response.json())
             .then(tasks => this.setState({ tasks }));
     }
@@ -111,7 +112,7 @@ class ToDoForm extends React.Component {
 
     componentDidMount() {
         if (this.props.id) {
-            fetch('http://localhost:3000/tasks/' + this.props.id)
+            fetch('/tasks/' + this.props.id)
                 .then(response => response.json())
                 .then(data => {
                     this.setState(data)

@@ -11,7 +11,7 @@ class Tenants extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/tenants')
+        fetch('/tenants')
             .then(response => response.json())
             .then(tenants => this.setState({ tenants }));
     }
@@ -27,6 +27,7 @@ class Tenants extends React.Component {
     render() {
         return (
             <div className={["container", "forFixed"].join(" ")}>
+                <div className="tenantImg"></div>
                 {this.state.tenants.map(tenant => {
                     return <TenantCard key={ tenant.id} tenant={ tenant } onClick={(e) => this.editTenant(e)}/>
                 })}

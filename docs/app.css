@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap; }
-  @media (min-width: 576px) and (max-width: 767px), (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) and (max-width: 1199px), (min-width: 1200px) {
+  @media (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) {
     .container {
       flex-direction: row;
       align-content: flex-start; } }
@@ -66,7 +66,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; }
-    @media (min-width: 576px) and (max-width: 767px) {
+    @media tablet {
       .container .box {
         height: 50vh;
         flex-grow: 1; } }
@@ -108,7 +108,7 @@ body {
   flex-direction: column;
   border-radius: 5%; }
   .card hr {
-    border: 2px solid #c0dfd9;
+    border: 2px solid mediumseagreen;
     width: 40vw;
     align-self: center;
     margin-top: 10px;
@@ -127,7 +127,9 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    padding-top: 2vh;
+    padding-bottom: 2vh; }
     .card .cardbtn button {
       border: none;
       outline: 0;
@@ -144,6 +146,11 @@ body {
       .card .cardbtn button:hover {
         color: #c0dfd9;
         font-weight: bold; }
+      .card .cardbtn button .navButton {
+        font-size: 12px; }
+        .card .cardbtn button .navButton:hover {
+          color: #c0dfd9;
+          font-weight: bold; }
     .card .cardbtn .mainbtn {
       width: 50%;
       background-color: #3b3a36; }
@@ -155,5 +162,41 @@ body {
     transform: scale(1.1); }
 
 .estateImg {
-  height: 15vh; }
+  background-image: url(images/buildings.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15vh;
+  margin-bottom: 5vh; }
+
+.tenantImg {
+  background-image: url(images/tenants.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15vh;
+  margin-bottom: 5vh;
+  background-position-y: 50%; }
+
+.vendorImg {
+  background-image: url(images/vendors.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15vh;
+  margin-bottom: 5vh;
+  background-position-y: 40%; }
+
+.paymentImg {
+  background-image: url(images/payment.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15vh;
+  margin-bottom: 5vh;
+  background-position-y: 70%; }
+
+.toDoImg {
+  background-image: url(images/todo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15vh;
+  margin-bottom: 5vh;
+  background-position-y: 70%; }
 

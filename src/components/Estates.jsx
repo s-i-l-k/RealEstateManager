@@ -11,7 +11,7 @@ class Estates extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/buildings')
+        fetch('/buildings')
             .then(response => response.json())
             .then(buildings => this.setState({ buildings }));
     }

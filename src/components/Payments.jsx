@@ -23,6 +23,7 @@ class Payments extends React.Component {
     render() {
         return (
             <div className={["container", "forFixed"].join(" ")}>
+                <div className="paymentImg"></div>
                 {this.state.buildings.map(((building, i) => {
                     return <IsPaid key={building.id} building={building} day={this.state.date.getDate()}
                                        month={this.state.date.getMonth() +1} days={this.daysInMonths(this.state.date.getMonth() +1, this.state.date.getFullYear())}
@@ -88,6 +89,12 @@ class IsPaid extends React.Component {
         }
     }
 
+    onItemSaved = (item) => {
+        console.log("@@@", item);
+
+        // savedPayment => this.setState({ payment: savedPayment })
+    }
+
     render() {
         if (!this.state.payment) {
             return <div>LOADING</div>;
@@ -109,7 +116,7 @@ class IsPaid extends React.Component {
                     <label>Potwierdź płatność za miesiąc {nextMonth}
                         <button onClick={this.handleCheck}>Zapłacono</button>
                     </label>
-                    <SendButton payment={this.state.payment} onSaved={ savedPayment => this.setState({ payment: savedPayment }) }/>
+                    <SendButton payment={this.state.payment} onSaved={ this.onItemSaved }/>
                 </div>
             )
         } else if (this.state.late){
@@ -120,7 +127,7 @@ class IsPaid extends React.Component {
                         <label>Potwierdź płatność za miesiąc {nextMonth}
                             <button onClick={this.handleCheck}>Zapłacono</button>
                         </label>
-                        <SendButton payment={this.state.payment} onSaved={ savedPayment => this.setState({ payment: savedPayment })}/>
+                        <SendButton payment={this.state.payment} onSaved={ this.onItemSaved }/>
                     </div>
                 )
             }
@@ -139,8 +146,11 @@ class SendButton extends React.Component {
             body: JSON.stringify(payment)
         })
             .then(resp => resp.json())
-            .then(data => console.log(data))
-            .then( data => this.props.onSaved(data) )
+            .then(data => {
+                console.log(data);
+                return data;
+            })
+            .then(data => this.props.onSaved(data) )
     }
 
     render() {
