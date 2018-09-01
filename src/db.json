@@ -38,24 +38,33 @@
       "pesel": "88112300543"
     },
     {
-      "name": "",
-      "phone": "",
-      "email": "",
-      "pesel": "",
+      "name": "Krzysztof Zieliński",
+      "phone": "508543190",
+      "email": "krzysiek@gmail.com",
+      "pesel": "85031200576",
+      "id": 2
+    },
+    {
+      "name": "Zosia Płatek",
+      "phone": "503677307",
+      "email": "zosia@wp.pl",
+      "pesel": "89102107543",
       "id": 3
     }
   ],
   "vendors": [
     {
       "name": "Stasiu Frąckowiak",
+      "profession": "od wszystkiego",
       "phone": "608164222",
       "email": "stasiu@wp.pl",
       "id": 1
     },
     {
-      "name": "",
-      "phone": "",
-      "email": "",
+      "name": "Heniu Knopczyński",
+      "profession": "malarz",
+      "phone": "604878443",
+      "email": "heniu@gmail.com",
       "id": 2
     }
   ],
@@ -71,7 +80,5 @@
       "id": 2
     }
   ],
-  "payments": [
-
-  ]
+  "payments": []
 }

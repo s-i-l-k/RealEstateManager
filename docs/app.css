@@ -106,7 +106,8 @@ body {
   overflow-wrap: break-word;
   display: flex;
   flex-direction: column;
-  border-radius: 5%; }
+  border-radius: 5%;
+  position: relative; }
   .card hr {
     border: 2px solid mediumseagreen;
     width: 40vw;
@@ -121,10 +122,24 @@ body {
   .card a {
     text-decoration: none;
     font-size: 22px;
-    color: white; }
+    color: black; }
     .card a:hover {
       color: #c0dfd9;
       font-weight: bold; }
+  .card .greenCircle {
+    width: 30px;
+    height: 30px;
+    background-color: #b3c2bf;
+    border: 3px solid mediumseagreen;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 20px; }
+    .card .greenCircle h3 {
+      color: mediumseagreen;
+      line-height: 30px;
+      font-weight: bold;
+      text-align: center; }
   .card .cardbtn {
     display: flex;
     flex-direction: row;
@@ -149,13 +164,23 @@ body {
         color: #c0dfd9;
         font-weight: bold; }
       .card .cardbtn button .navButton {
-        font-size: 12px; }
+        font-size: 12px;
+        color: white; }
         .card .cardbtn button .navButton:hover {
           color: #c0dfd9;
           font-weight: bold; }
-    .card .cardbtn .mainbtn {
+    .card .cardbtn .editbtn {
       width: 50%;
       background-color: #3b3a36; }
+      .card .cardbtn .editbtn:hover {
+        color: steelblue;
+        font-weight: bold; }
+    .card .cardbtn .deletebtn {
+      width: 50%;
+      background-color: #3b3a36; }
+      .card .cardbtn .deletebtn:hover {
+        color: red;
+        font-weight: bold; }
 
 .plain {
   text-decoration: none; }

@@ -13,6 +13,7 @@ class BuildingCard extends React.Component {
         const {building} = this.props;
         return (
             <div className="card">
+                <div className="greenCircle"><h3>{building.name.slice(0, 1)}</h3></div>
                 <h2>{ building.name }</h2>
                 <hr/>
                 <p><span>adres:</span> {building.street} {building.number} / {building.flat}</p>
@@ -23,27 +24,12 @@ class BuildingCard extends React.Component {
                 <p><span>data płatności: </span>do {building.dayOfPayment} każdego miesiąca</p>
                 <p><span>czynsz: </span>{building.rent} zł + koszty eksploatacyjne: {building.service} zł</p>
                 <div className="cardbtn">
-                    <button onClick={this.props.onClick} id={building.id} className="mainbtn">Edytuj</button>
-                    <button onClick={() => this.props.onDelete(this.props.building)} className="mainbtn">Usuń</button>
-                    <button onClick={this.showTenants}>Najemcy</button>
+                    <button onClick={this.props.onClick} id={building.id} className="editbtn">Edytuj</button>
+                    <button onClick={() => this.props.onDelete(this.props.building)} className="deletebtn">Usuń</button>
+                    <button><NavLink to="/tenants" className="navButton">Najemcy</NavLink></button>
                     <button><NavLink to="/payments" className="navButton">Płatności</NavLink></button>
                     <button><NavLink to="/todo" className="navButton">Do zrobienia</NavLink></button>
                 </div>
-            </div>
-        )
-    }
-}
-
-class More extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.props.onClick}>Pokaż więcej</button>
-                {this.props.children}
             </div>
         )
     }

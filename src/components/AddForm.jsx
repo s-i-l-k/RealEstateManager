@@ -247,6 +247,7 @@ class VendorForm extends React.Component {
         super(props);
         this.state = {
             name: '',
+            profession: '',
             phone: '',
             email: ''
         }
@@ -264,6 +265,10 @@ class VendorForm extends React.Component {
 
     handleNameChange = (event) => {
         this.setState({name: event.target.value})
+    }
+
+    handleProfessionChange = (event) => {
+        this.setState({profession: event.target.value})
     }
 
     handlePhoneChange = (event) => {
@@ -298,6 +303,10 @@ class VendorForm extends React.Component {
                     <label>
                         Imię i nazwisko
                         <input type="text" value={this.state.name} onChange={this.handleNameChange}/><br/>
+                    </label>
+                    <label>
+                        Specjalność
+                        <input type="text" value={this.state.profession} onChange={this.handleProfessionChange}/><br/>
                     </label>
                     <label>
                         Telefon
