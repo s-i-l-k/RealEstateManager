@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 class AddForm extends React.Component {
     constructor(props) {
@@ -106,12 +107,6 @@ class FullForm extends React.Component {
         this.setState({dayOfPayment: event.target.value})
     }
 
-    check = (e) => {
-        console.log('checking');
-        e.preventDefault();
-        this.send();
-    }
-
     send = () => {
         const data = this.state;
 
@@ -159,7 +154,7 @@ class FullForm extends React.Component {
                         <input type="number" value={this.state.service} placeholder="Koszty eksploatacyjne" onChange={this.handleServiceChange}/>
                         <input type="number" value={this.state.dayOfPayment} placeholder="Dzień płatności" onChange={this.handleDayOfPaymentChange}/>
                     </label>
-                        <input type="submit" onClick={this.check}/>
+                    <NavLink to="/estates"><input type="submit" onClick={this.send}/></NavLink>
                 </form>
             </div>
         )
@@ -203,12 +198,6 @@ class TenantForm extends React.Component {
         this.setState({pesel: event.target.value})
     }
 
-    check = (e) => {
-        console.log('checking');
-        e.preventDefault();
-        this.send();
-    }
-
     send = () => {
         const data = this.state;
 
@@ -246,7 +235,7 @@ class TenantForm extends React.Component {
                         Pesel
                         <input type="number" value={this.state.pesel} onChange={this.handlePeselChange}></input><br/>
                     </label>
-                    <input type="submit" onClick={this.check}/>
+                    <NavLink to={'/tenants'}><input type="submit" onClick={this.send}/></NavLink>
                 </form>
             </div>
         )
@@ -285,13 +274,6 @@ class VendorForm extends React.Component {
         this.setState({email: event.target.value})
     }
 
-
-    check = (e) => {
-        console.log('checking');
-        e.preventDefault();
-        this.send();
-    }
-
     send = () => {
         const data = this.state;
 
@@ -325,7 +307,7 @@ class VendorForm extends React.Component {
                         Email
                         <input type="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
                     </label>
-                    <input type="submit" onClick={this.check}/>
+                    <NavLink to="/vendors"><input type="submit" onClick={this.send}/></NavLink>
                 </form>
             </div>
         )

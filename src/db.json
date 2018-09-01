@@ -3,30 +3,30 @@
     {
       "name": "Traugutta",
       "street": "Traugutta",
-      "number": "38a",
-      "flat": "52",
-      "rooms": "2",
-      "area": "35",
-      "startDate": "01.09.2017",
-      "expiringDate": "31.08.2018",
-      "rent": "1500",
-      "service": "260",
-      "id": 1,
-      "dayOfPayment": "15"
-    },
-    {
-      "id": 2,
-      "name": "Słowiańska",
-      "street": "Słowiańska",
-      "number": "36",
-      "flat": "12",
+      "number": "58",
+      "flat": "2",
       "rooms": "2",
       "area": "45",
-      "startDate": "01.03.2018",
-      "expiringDate": "28.02.2019",
-      "rent": "1700",
-      "service": "350",
-      "dayOfPayment": "10"
+      "startDate": "1.09.2017",
+      "expiringDate": "31.12.20181",
+      "rent": "1500",
+      "service": "299",
+      "dayOfPayment": "10",
+      "id": 1
+    },
+    {
+      "name": "Słowiańska",
+      "street": "Słowiańska",
+      "number": "2",
+      "flat": "56",
+      "rooms": "3",
+      "area": "60",
+      "startDate": "1.07.2017",
+      "expiringDate": "31.06.2019",
+      "rent": "1800",
+      "service": "700",
+      "dayOfPayment": "15",
+      "id": 2
     }
   ],
   "tenants": [
@@ -38,19 +38,25 @@
       "pesel": "88112300543"
     },
     {
-      "id": 2,
-      "name": "Krzysztof Zieliński",
-      "phone": "605760890",
-      "email": "zielinski.k@gmail.com",
-      "pesel": "79040200671"
+      "name": "",
+      "phone": "",
+      "email": "",
+      "pesel": "",
+      "id": 3
     }
   ],
   "vendors": [
     {
-      "id": 1,
-      "name": "Stanisław Frąckowiak",
-      "phone": "505870651",
-      "email": "stasiu@gmail.com"
+      "name": "Stasiu Frąckowiak",
+      "phone": "608164222",
+      "email": "stasiu@wp.pl",
+      "id": 1
+    },
+    {
+      "name": "",
+      "phone": "",
+      "email": "",
+      "id": 2
     }
   ],
   "tasks": [

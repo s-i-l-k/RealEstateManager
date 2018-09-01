@@ -17,7 +17,7 @@ class TenantCard extends React.Component {
                 <p>E-mail: <a href={`tel:${tenant.email}`}>{tenant.email}</a></p>
                 <div className="cardbtn">
                     <button onClick={this.props.onClick} id={tenant.id} className="mainbtn">Edytuj</button>
-                    <button className="mainbtn">Usuń</button>
+                    <button onClick={() => this.props.onDelete(this.props.tenant)} className="mainbtn">Usuń</button>
                 </div>
             </div>
         )

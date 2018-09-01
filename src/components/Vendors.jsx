@@ -24,12 +24,35 @@ class Tenants extends React.Component {
         {this.props.history.push('/form/vendors/' + event.target.id)}
     }
 
+    handleVendorRemove = (vendor) => {
+        const data = this.state;
+        fetch('/vendors/' + vendor.id, {
+            method : 'DELETE',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": "application/json"
+            }
+        })
+            .then(resp => resp.json())
+            .then( data => { console.log("@@@@", data);})
+            .then(() => this.vendorRemove(vendor));
+    }
+
+    vendorRemove = ({ id }) => {
+        console.log('remove', id);
+        this.setState((state) => {
+            return {
+                vendors: state.vendors.filter((vendorToFilter) => vendorToFilter.id !== id)
+            }
+        })
+    }
+
     render() {
         return (
             <div className={["container", "forFixed"].join(" ")}>
                 <div className="vendorImg"></div>
                 {this.state.vendors.map(vendor => {
-                    return <VendorCard key={ vendor.id} vendor={ vendor } onClick={(e) => this.editVendor(e)}/>
+                    return <VendorCard key={ vendor.id} vendor={ vendor } onClick={(e) => this.editVendor(e)} onDelete={this.handleVendorRemove}/>
                 })}
                 <AddButton onClick={() => this.handleClick()}/>
             </div>

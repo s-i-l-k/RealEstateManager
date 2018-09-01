@@ -138,6 +138,9 @@ body {
   p {
     color: black;
     font-size: 18px;
+    span {
+      color: white;
+    }
   }
   a {
     text-decoration: none;
@@ -237,4 +240,11 @@ body {
   height: 15vh;
   margin-bottom: 5vh;
   background-position-y: 70%;
+}
+
+.payment {
+  color: #3b3a36;
+  h2 {
+    line-height: 30px;
+  }
 }

@@ -91,8 +91,7 @@ class IsPaid extends React.Component {
 
     onItemSaved = (item) => {
         console.log("@@@", item);
-
-        // savedPayment => this.setState({ payment: savedPayment })
+        savedPayment => this.setState({ payment: savedPayment })
     }
 
     render() {
@@ -104,14 +103,16 @@ class IsPaid extends React.Component {
 
         if(this.state.late === false){
             return (
-                <div>
-                    <p>Płatności {this.props.building.name}</p>
-                    {this.state.payment.arr.map((e, i) => {
-                            return <label key={i}>{e}
-                                <input type="checkbox" checked disabled></input>
-                            </label>
-                        }
-                    )}
+                <div className="payment">
+                    <h2>Płatności {this.props.building.name}</h2>
+                    <div>
+                        {this.state.payment.arr.map((e, i) => {
+                                return <label key={i}>{e}
+                                    <input type="checkbox" checked disabled></input>
+                                </label>
+                            }
+                        )}
+                    </div>
                     <br/>
                     <label>Potwierdź płatność za miesiąc {nextMonth}
                         <button onClick={this.handleCheck}>Zapłacono</button>
@@ -121,8 +122,8 @@ class IsPaid extends React.Component {
             )
         } else if (this.state.late){
                 return (
-                    <div>
-                        <p>Płatności {this.props.building.name}</p>
+                    <div className="payment">
+                        <h2>Płatności {this.props.building.name}</h2>
                         <p>Opóźnienie {Math.abs(Number(this.props.day) - Number(this.props.building.dayOfPayment))} dni!</p>
                         <label>Potwierdź płatność za miesiąc {nextMonth}
                             <button onClick={this.handleCheck}>Zapłacono</button>

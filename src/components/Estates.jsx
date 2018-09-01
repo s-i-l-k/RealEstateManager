@@ -24,13 +24,36 @@ class Estates extends React.Component {
         {this.props.history.push('/form/estates/' + event.target.id)}
     }
 
+    handleBuildingRemove = (building) => {
+        const data = this.state;
+        fetch('/buildings/' + building.id, {
+            method : 'DELETE',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": "application/json"
+            }
+        })
+            .then(resp => resp.json())
+            .then( data => { console.log("@@@@", data);})
+            .then(() => this.buildingRemove(building));
+    }
+
+    buildingRemove = ({ id }) => {
+        console.log('remove', id);
+        this.setState((state) => {
+            return {
+                buildings: state.buildings.filter((buildingToFilter) => buildingToFilter.id !== id)
+            }
+        })
+    }
+
 
     render() {
         return (
             <div className='forFixed'>
                 <div className="estateImg"></div>
                 {this.state.buildings.map(building => {
-                    return <BuildingCard key={ building.id } building={ building } onClick={(e) => this.editBuilding(e)}/>
+                    return <BuildingCard key={ building.id } building={ building } onClick={(e) => this.editBuilding(e)} onDelete={this.handleBuildingRemove} />
                 })}
                 <AddButton onClick={() => this.handleClick()}/>
             </div>

@@ -24,7 +24,7 @@ class BuildingCard extends React.Component {
                 <p><span>czynsz: </span>{building.rent} zł + koszty eksploatacyjne: {building.service} zł</p>
                 <div className="cardbtn">
                     <button onClick={this.props.onClick} id={building.id} className="mainbtn">Edytuj</button>
-                    <button className="mainbtn">Usuń</button>
+                    <button onClick={() => this.props.onDelete(this.props.building)} className="mainbtn">Usuń</button>
                     <button onClick={this.showTenants}>Najemcy</button>
                     <button><NavLink to="/payments" className="navButton">Płatności</NavLink></button>
                     <button><NavLink to="/todo" className="navButton">Do zrobienia</NavLink></button>
