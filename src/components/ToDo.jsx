@@ -30,8 +30,8 @@ class ToDo extends React.Component {
                         Wybierz nieruchomość:
                         {this.state.buildings.map((building, i) => {
                             return (
-                                <div className="pick">
-                                    <label key={i}>
+                                <div className="pick" key={i}>
+                                    <label>
                                         <input type="radio" value={building.name} checked={this.state.selectedOption == building.name} onChange={this.handleBuildingChange}/>
                                         {building.name}
                                     </label>

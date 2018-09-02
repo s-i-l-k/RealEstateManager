@@ -129,7 +129,7 @@ class FullForm extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="form">
                 <h3>NOWA NIERUCHOMOŚĆ</h3>
                 <form>
                     <label>
@@ -158,7 +158,7 @@ class FullForm extends React.Component {
                         <input type="number" value={this.state.service} placeholder="Koszty eksploatacyjne" onChange={this.handleServiceChange}/>
                         <input type="number" value={this.state.dayOfPayment} placeholder="Dzień płatności" onChange={this.handleDayOfPaymentChange}/>
                     </label>
-                    <input type="submit" onClick={this.send} value="Zapisz"/>
+                    <input type="submit" onClick={this.send} value="Zapisz" className="sendbtn"/>
                 </form>
             </div>
         )
@@ -225,8 +225,8 @@ class TenantForm extends React.Component {
     render() {
 
         return (
-            <div>
-                <h3>NOWY NAJEMCA</h3>
+            <div className="form">
+                    <h3>NOWY NAJEMCA</h3>
                 <form>
                     <label>
                         Imię i nazwisko
@@ -244,7 +244,7 @@ class TenantForm extends React.Component {
                         Pesel
                         <input type="number" value={this.state.pesel} onChange={this.handlePeselChange}></input><br/>
                     </label>
-                    <input type="submit" onClick={this.send} value="Zapisz"/>
+                    <input type="submit" onClick={this.send} value="Zapisz" className="sendbtn"/>
                 </form>
             </div>
         )
@@ -310,7 +310,7 @@ class VendorForm extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="form">
                 <h3>NOWY WYKONAWCA</h3>
                 <form>
                     <label>
@@ -329,7 +329,7 @@ class VendorForm extends React.Component {
                         Email
                         <input type="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
                     </label>
-                    <input type="submit" onClick={this.send} value="Zapisz"/>
+                    <input type="submit" onClick={this.send} value="Zapisz" className="sendbtn"/>
                 </form>
             </div>
         )
