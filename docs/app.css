@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap; }
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media (min-width: 768px) {
     .container {
       flex-direction: row;
       width: 100vw; } }
@@ -47,21 +47,32 @@ body {
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
       .container .image1 {
-        width: 33vw; } }
+        width: 33.33vw; } }
+    @media (min-width: 1024px) {
+      .container .image1 {
+        width: 20vw; } }
   .container .image2 {
     background-image: url(images/tenants.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
       .container .image2 {
-        width: 33vw; } }
+        width: 33.33vw; } }
+    @media (min-width: 1024px) {
+      .container .image2 {
+        width: 20vw;
+        background-position-x: 70%; } }
   .container .image3 {
     background-image: url(images/vendors.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
       .container .image3 {
-        width: 33vw; } }
+        width: 33.33vw; } }
+    @media (min-width: 1024px) {
+      .container .image3 {
+        width: 20vw;
+        background-position-x: 50%; } }
   .container .image4 {
     background-image: url(images/payment.jpg);
     background-size: cover;
@@ -69,6 +80,10 @@ body {
     @media (min-width: 768px) and (max-width: 1023px) {
       .container .image4 {
         width: 50vw; } }
+    @media (min-width: 1024px) {
+      .container .image4 {
+        width: 20vw;
+        background-position-x: 50%; } }
   .container .image5 {
     background-image: url(images/todo.jpg);
     background-size: cover;
@@ -76,6 +91,10 @@ body {
     @media (min-width: 768px) and (max-width: 1023px) {
       .container .image5 {
         width: 50vw; } }
+    @media (min-width: 1024px) {
+      .container .image5 {
+        width: 20vw;
+        background-position-x: 30%; } }
   .container .box {
     height: 30vh;
     display: flex;
@@ -84,6 +103,9 @@ body {
     @media (min-width: 768px) and (max-width: 1023px) {
       .container .box {
         height: 45vh; } }
+    @media (min-width: 1024px) {
+      .container .box {
+        height: 90vh; } }
     .container .box h2 {
       color: white;
       text-shadow: 4px 0 10px #3b3a36; }
