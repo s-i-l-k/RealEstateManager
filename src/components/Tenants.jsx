@@ -11,8 +11,9 @@ class Tenants extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/tenants')
+        fetch('https://realestatemanager-4c9ef.firebaseio.com/tenants.json')
             .then(response => response.json())
+            .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
             .then(tenants => this.setState({ tenants }));
     }
 
@@ -26,7 +27,7 @@ class Tenants extends React.Component {
 
     handleTenantRemove = (tenant) => {
         const data = this.state;
-        fetch('/tenants/' + tenant.id, {
+        fetch(`https://realestatemanager-4c9ef.firebaseio.com/tenants/${tenant.id}.json`, {
             method : 'DELETE',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

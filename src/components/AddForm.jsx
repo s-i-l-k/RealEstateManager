@@ -11,21 +11,21 @@ class AddForm extends React.Component {
             return (
                 <div className={["container", "forFixed"].join(" ")}>
                     <div className="estateImg"></div>
-                    <FullForm id={ this.props.match.params.id }/>
+                    <FullForm id={ this.props.match.params.id } />
                 </div>
             )
         } else if (this.props.match.params.type === "tenants") {
             return (
                 <div className={["container", "forFixed"].join(" ")}>
                     <div className="tenantImg"></div>
-                    <TenantForm id={ this.props.match.params.id }/>
+                    <TenantForm id={ this.props.match.params.id } />
                 </div>
             )
         } else if (this.props.match.params.type === "vendors") {
             return (
                 <div className={["container", "forFixed"].join(" ")}>
                     <div className="vendorImg"></div>
-                    <VendorForm id={ this.props.match.params.id }/>
+                    <VendorForm id={ this.props.match.params.id } />
                 </div>
             )
         }
@@ -54,7 +54,7 @@ class FullForm extends React.Component {
 
     componentDidMount() {
         if (this.props.id) {
-            fetch('/buildings/' + this.props.id)
+            fetch(`https://realestatemanager-4c9ef.firebaseio.com/buildings/${this.props.id}.json`)
                 .then(response => response.json())
                 .then(data => {
                     this.setState(data)
@@ -110,7 +110,10 @@ class FullForm extends React.Component {
     send = () => {
         const data = this.state;
 
-        fetch('/buildings' + (this.props.id ? `/${this.props.id}` : ""), {
+        const createUrl = `https://realestatemanager-4c9ef.firebaseio.com/buildings.json`;
+        const updateUrl = `https://realestatemanager-4c9ef.firebaseio.com/buildings/${this.props.id}.json`;
+
+        fetch(this.props.id ? updateUrl : createUrl, {
             method : this.props.id ? "PUT" : 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -119,7 +122,8 @@ class FullForm extends React.Component {
             body: JSON.stringify(data)
         })
             .then(resp => resp.json())
-            .then( data => { console.log(data);});
+
+            .then( () => { console.log(data);});
     }
 
     render() {
@@ -174,7 +178,7 @@ class TenantForm extends React.Component {
 
     componentDidMount() {
         if (this.props.id) {
-            fetch('/tenants/' + this.props.id)
+            fetch(`https://realestatemanager-4c9ef.firebaseio.com/tenants/${this.props.id}.json`)
                 .then(response => response.json())
                 .then(data => {
                     this.setState(data)
@@ -201,7 +205,11 @@ class TenantForm extends React.Component {
     send = () => {
         const data = this.state;
 
-        fetch('/tenants' + (this.props.id ? `/${this.props.id}` : ""), {
+        const createUrl = `https://realestatemanager-4c9ef.firebaseio.com/tenants.json`;
+        const updateUrl = `https://realestatemanager-4c9ef.firebaseio.com/tenants/${this.props.id}.json`;
+
+
+        fetch(this.props.id ? updateUrl : createUrl, {
             method : this.props.id ? "PUT" : 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -255,7 +263,7 @@ class VendorForm extends React.Component {
 
     componentDidMount() {
         if (this.props.id) {
-            fetch('/vendors/' + this.props.id)
+            fetch(`https://realestatemanager-4c9ef.firebaseio.com/vendors/${this.props.id}.json`)
                 .then(response => response.json())
                 .then(data => {
                     this.setState(data)
@@ -282,7 +290,10 @@ class VendorForm extends React.Component {
     send = () => {
         const data = this.state;
 
-        fetch('/vendors' + (this.props.id ? `/${this.props.id}` : ""), {
+        const createUrl = `https://realestatemanager-4c9ef.firebaseio.com/vendors.json`;
+        const updateUrl = `https://realestatemanager-4c9ef.firebaseio.com/vendors/${this.props.id}.json`;
+
+        fetch(this.props.id ? updateUrl : createUrl, {
             method : this.props.id ? "PUT" : 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

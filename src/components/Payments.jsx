@@ -15,8 +15,9 @@ class Payments extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/buildings')
+        fetch('https://realestatemanager-4c9ef.firebaseio.com/buildings.json')
             .then(response => response.json())
+            .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
             .then(buildings => this.setState({ buildings }));
     }
 
@@ -46,8 +47,9 @@ class IsPaid extends React.Component {
 
     componentDidMount() {
         if (this.props.building) {
-            fetch('/payments/')
+            fetch('https://realestatemanager-4c9ef.firebaseio.com/payments.json')
                 .then(response => response.json())
+                .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
                 .then(data => {
                     const payment = data.find(payment => payment.buildingId === this.props.building.id);
 
@@ -145,7 +147,11 @@ class IsPaid extends React.Component {
 class SendButton extends React.Component {
     send = () => {
         const payment = this.props.payment;
-        fetch('/payments' + (payment.id ? `/${payment.id}` : ""),{
+
+        const createUrl = `https://realestatemanager-4c9ef.firebaseio.com/payments.json`;
+        const updateUrl = `https://realestatemanager-4c9ef.firebaseio.com/payments/${payment.id}.json`;
+
+        fetch(this.props.id ? updateUrl : createUrl,{
             method : payment.id ? "PUT" : 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

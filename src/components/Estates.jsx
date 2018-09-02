@@ -2,6 +2,8 @@ import React from 'react';
 import BuildingCard from "./BuildingCard.jsx";
 import AddButton from "./AddButton.jsx";
 
+const objToArr = obj => Object.keys(obj).map(id => ({ id, ...obj[id] }));
+
 class Estates extends React.Component {
     constructor(props) {
         super(props);
@@ -11,8 +13,10 @@ class Estates extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/buildings')
+        console.log("MOUNT ESTATES");
+        fetch('https://realestatemanager-4c9ef.firebaseio.com/buildings.json')
             .then(response => response.json())
+            .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
             .then(buildings => this.setState({ buildings }));
     }
 
@@ -26,7 +30,7 @@ class Estates extends React.Component {
 
     handleBuildingRemove = (building) => {
         const data = this.state;
-        fetch('/buildings/' + building.id, {
+        fetch(`https://realestatemanager-4c9ef.firebaseio.com/buildings/${building.id}.json`, {
             method : 'DELETE',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

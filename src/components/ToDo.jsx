@@ -13,8 +13,9 @@ class ToDo extends React.Component {
     };
 
     componentDidMount() {
-        fetch('/buildings')
+        fetch('https://realestatemanager-4c9ef.firebaseio.com/buildings.json')
             .then(response => response.json())
+            .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
             .then(buildings => this.setState({buildings}));
     }
 
@@ -48,14 +49,15 @@ class ToDoList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/tasks')
+        fetch('https://realestatemanager-4c9ef.firebaseio.com/tasks.json')
             .then(response => response.json())
+            .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
             .then(tasks => this.setState({ tasks }));
     }
 
     handleItemDone = (task) => {
         const data = this.state;
-        fetch('/tasks/' + task.id, {
+        fetch(`https://realestatemanager-4c9ef.firebaseio.com/tasks/${task.id}.json`, {
             method : 'DELETE',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -112,8 +114,9 @@ class ToDoForm extends React.Component {
 
     componentDidMount() {
         if (this.props.id) {
-            fetch('/tasks/' + this.props.id)
+            fetch(`https://realestatemanager-4c9ef.firebaseio.com/tasks/${this.props.id}.json`,)
                 .then(response => response.json())
+                .then(obj => Object.keys(obj).map(id => ({ id, ...obj[id] })))
                 .then(data => {
                     this.setState(data)
                 })
@@ -136,7 +139,7 @@ class ToDoForm extends React.Component {
     send = () => {
         const data = this.state;
 
-        fetch('http://localhost:3000/tasks', {
+        fetch('https://realestatemanager-4c9ef.firebaseio.com/tasks.json', {
             method : 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
@@ -145,7 +148,7 @@ class ToDoForm extends React.Component {
             body: JSON.stringify(data)
         })
             .then(resp => resp.json())
-            .then((newTask) => this.props.onTaskAdd(newTask))
+            .then(({ name }) => this.props.onTaskAdd({ ...data, id: name }))
             .then(() => this.setState({ task: "" }));
     }
 
