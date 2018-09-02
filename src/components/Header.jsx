@@ -30,7 +30,7 @@ class Header extends React.Component {
             )
         } else {
             return (
-                <div className='container'>
+                <div className='slideContainer'>
                     <div className='header'>
                         <NavLink to={'/'} className='logo'></NavLink>
                         <div className='menu2' onClick={this.showHideMenu}></div>

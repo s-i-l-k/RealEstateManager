@@ -5,7 +5,7 @@ class Boxes extends React.Component {
 
     render() {
             return (
-                <div className={['container', 'forFixed'].join(" ")}>
+                <div className={['headerContainer', 'forFixed'].join(" ")}>
                     {title.map((e,i) => {
                         return (
                             <NavLink key={i} to={e.url || ""} className="plain">

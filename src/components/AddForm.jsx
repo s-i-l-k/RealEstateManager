@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import history from "./history";
 
 class AddForm extends React.Component {
     constructor(props) {
@@ -122,7 +122,7 @@ class FullForm extends React.Component {
             body: JSON.stringify(data)
         })
             .then(resp => resp.json())
-
+            .then(() => history.replace("/estates"))
             .then( () => { console.log(data);});
     }
 
@@ -158,7 +158,7 @@ class FullForm extends React.Component {
                         <input type="number" value={this.state.service} placeholder="Koszty eksploatacyjne" onChange={this.handleServiceChange}/>
                         <input type="number" value={this.state.dayOfPayment} placeholder="Dzień płatności" onChange={this.handleDayOfPaymentChange}/>
                     </label>
-                    <NavLink to="/estates"><input type="submit" onClick={this.send}/></NavLink>
+                    <input type="submit" onClick={this.send} value="Zapisz"/>
                 </form>
             </div>
         )
@@ -218,6 +218,7 @@ class TenantForm extends React.Component {
             body: JSON.stringify(data)
         })
             .then(resp => resp.json())
+            .then(() => history.replace("/tenants"))
             .then( data => { console.log(data);});
     }
 
@@ -243,7 +244,7 @@ class TenantForm extends React.Component {
                         Pesel
                         <input type="number" value={this.state.pesel} onChange={this.handlePeselChange}></input><br/>
                     </label>
-                    <NavLink to={'/tenants'}><input type="submit" onClick={this.send}/></NavLink>
+                    <input type="submit" onClick={this.send} value="Zapisz"/>
                 </form>
             </div>
         )
@@ -302,6 +303,7 @@ class VendorForm extends React.Component {
             body: JSON.stringify(data)
         })
             .then(resp => resp.json())
+            .then(() => history.replace("/vendors"))
             .then( data => { console.log(data);});
     }
 
@@ -327,7 +329,7 @@ class VendorForm extends React.Component {
                         Email
                         <input type="email" value={this.state.email} onChange={this.handleEmailChange}/><br/>
                     </label>
-                    <NavLink to="/vendors"><input type="submit" onClick={this.send}/></NavLink>
+                    <input type="submit" onClick={this.send} value="Zapisz"/>
                 </form>
             </div>
         )

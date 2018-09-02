@@ -37,87 +37,94 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap; }
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; }
   @media (min-width: 768px) {
-    .container {
+    .headerContainer {
       flex-direction: row;
       width: 100vw; } }
-  .container .image1 {
+  .headerContainer .image1 {
     background-image: url(images/buildings.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .container .image1 {
+      .headerContainer .image1 {
         width: 33.33vw; } }
     @media (min-width: 1024px) {
-      .container .image1 {
+      .headerContainer .image1 {
         width: 20vw; } }
-  .container .image2 {
+  .headerContainer .image2 {
     background-image: url(images/tenants.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .container .image2 {
+      .headerContainer .image2 {
         width: 33.33vw; } }
     @media (min-width: 1024px) {
-      .container .image2 {
+      .headerContainer .image2 {
         width: 20vw;
         background-position-x: 70%; } }
-  .container .image3 {
+  .headerContainer .image3 {
     background-image: url(images/vendors.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .container .image3 {
+      .headerContainer .image3 {
         width: 33.33vw; } }
     @media (min-width: 1024px) {
-      .container .image3 {
+      .headerContainer .image3 {
         width: 20vw;
         background-position-x: 50%; } }
-  .container .image4 {
+  .headerContainer .image4 {
     background-image: url(images/payment.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .container .image4 {
+      .headerContainer .image4 {
         width: 50vw; } }
     @media (min-width: 1024px) {
-      .container .image4 {
+      .headerContainer .image4 {
         width: 20vw;
         background-position-x: 50%; } }
-  .container .image5 {
+  .headerContainer .image5 {
     background-image: url(images/todo.jpg);
     background-size: cover;
     background-repeat: no-repeat; }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .container .image5 {
+      .headerContainer .image5 {
         width: 50vw; } }
     @media (min-width: 1024px) {
-      .container .image5 {
+      .headerContainer .image5 {
         width: 20vw;
         background-position-x: 30%; } }
-  .container .box {
+  .headerContainer .box {
     height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center; }
     @media (min-width: 768px) and (max-width: 1023px) {
-      .container .box {
+      .headerContainer .box {
         height: 45vh; } }
     @media (min-width: 1024px) {
-      .container .box {
+      .headerContainer .box {
         height: 90vh; } }
-    .container .box h2 {
+    .headerContainer .box h2 {
       color: white;
       text-shadow: 4px 0 10px #3b3a36; }
-  .container .slideMenu {
+
+.slideContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; }
+  .slideContainer .slideMenu {
     height: 18vh;
     display: flex;
     justify-content: center;
     align-items: center; }
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .container .slideMenu {
-        flex-direction: row; } }
-  .container .dark {
+  .slideContainer .dark {
     background-color: #3b3a36;
     box-sizing: border-box;
     border-bottom: 1px solid white;
@@ -292,18 +299,19 @@ body {
     font-size: 16px; }
     .payment .confirmPayment span {
       color: steelblue; }
-    .payment .confirmPayment .paidbtn {
-      background-color: mediumseagreen;
-      border: none;
-      border-radius: 12px;
-      padding: 5px;
-      text-align: center;
-      text-transform: uppercase;
-      margin-left: 2vw;
-      font-size: 14px; }
-      .payment .confirmPayment .paidbtn:active {
-        background: #c0dfd9;
-        border: none; }
+
+.paidbtn {
+  background-color: mediumseagreen;
+  border: none;
+  border-radius: 12px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-left: 2vw;
+  font-size: 14px; }
+  .paidbtn:active {
+    background: #c0dfd9;
+    border: none; }
 
 .sendbtn {
   background-color: steelblue;
@@ -334,4 +342,56 @@ body {
     line-height: 30px;
     font-weight: bold;
     text-align: center; }
+
+.toDoList {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .toDoList hr {
+    border: 2px solid mediumseagreen;
+    width: 40vw;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .toDoList .toDoForm {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+    .toDoList .toDoForm .pick {
+      flex-direction: column;
+      padding: 3px; }
+
+.addTask {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .addTask .taskPlace {
+    width: 50vw;
+    height: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: steelblue; }
+
+.toDoCard {
+  background-color: #b3c2bf;
+  box-shadow: 0 4px 8px 0 #3b3a36;
+  width: 75vw;
+  margin: auto;
+  padding: 10px;
+  margin-top: 4vh;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5%;
+  position: relative; }
+  .toDoCard p {
+    color: black;
+    font-size: 18px; }
+    .toDoCard p span {
+      color: white; }
+  .toDoCard ul {
+    margin-left: 20px; }
+    .toDoCard ul li {
+      color: mediumseagreen;
+      padding-top: 5px; }
 

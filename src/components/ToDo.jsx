@@ -23,18 +23,24 @@ class ToDo extends React.Component {
         return (
             <div className="forFixed">
                 <div className="toDoImg"></div>
-                <form>
-                    Wybierz nieruchomość:
-                    {this.state.buildings.map((building, i) => {
-                        return (
-                            <label key={i}>
-                                <input type="radio" value={building.name} checked={this.state.selectedOption == building.name} onChange={this.handleBuildingChange}/>
-                                {building.name}
-                            </label>
-                        )
-                    })}
-                </form>
-                <ToDoList id={this.props.match.params.id} selected={this.state.selectedOption}/>
+                <div className="toDoList">
+                    <h2>Lista zadań</h2>
+                    <hr/>
+                    <form className="toDoForm">
+                        Wybierz nieruchomość:
+                        {this.state.buildings.map((building, i) => {
+                            return (
+                                <div className="pick">
+                                    <label key={i}>
+                                        <input type="radio" value={building.name} checked={this.state.selectedOption == building.name} onChange={this.handleBuildingChange}/>
+                                        {building.name}
+                                    </label>
+                                </div>
+                            )
+                        })}
+                    </form>
+                    <ToDoList id={this.props.match.params.id} selected={this.state.selectedOption}/>
+                </div>
             </div>
         )
     }
@@ -90,13 +96,15 @@ class ToDoList extends React.Component {
 
     render() {
         return (
-            <div> Dodaj zadanie:
+            <div className="addTask"> Dodaj zadanie:
                 <ToDoForm onTaskAdd={this.taskAdd} id={this.props.id} selected={this.props.selected}/>
-                <ul>
-                    {this.state.tasks.map((task, i) => {
-                        return <ToDoItem key={i} task={ task } onDone={this.handleItemDone} />
-                    })}
-                </ul>
+                <div className="toDoCard">
+                    <ul>
+                        {this.state.tasks.map((task, i) => {
+                            return <ToDoItem key={i} task={ task } onDone={this.handleItemDone} />
+                        })}
+                    </ul>
+                </div>
             </div>
         )
     }
@@ -154,9 +162,9 @@ class ToDoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <input value={this.state.task} onChange={this.onChange} />
-                <button>Dodaj</button>
+            <form onSubmit={this.onSubmit} >
+                <input className="taskPlace" value={this.state.task} onChange={this.onChange} />
+                <button className="sendbtn">Dodaj</button>
             </form>
         )
     }
@@ -170,8 +178,8 @@ class ToDoItem extends React.Component{
     }
     render(){
         return (
-            <li><span>{this.props.task.task}</span> <span>{this.props.task.selectedOption}</span>
-                <button onClick={this.handleDoneClick} >Zakończ</button>
+            <li><p className="task">{this.props.task.task} <span className="building">{this.props.task.selectedOption}</span>
+                <button className="paidbtn" onClick={this.handleDoneClick} >Zakończ</button></p>
             </li>
         )
     }

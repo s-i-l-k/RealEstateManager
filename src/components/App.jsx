@@ -1,5 +1,6 @@
 import React from 'react';
-import {HashRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
+import history from "./history";
 import Boxes from './Boxes.jsx';
 import Estates from './Estates.jsx';
 import Tenants from './Tenants.jsx';
@@ -14,7 +15,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <HashRouter>
+            <Router history={ history }>
                 <div>
                     <Header/>
                     <Switch>
@@ -29,7 +30,7 @@ class App extends React.Component {
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
-            </HashRouter>
+            </Router>
         )
     }
 }
