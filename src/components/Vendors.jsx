@@ -27,7 +27,7 @@ class Tenants extends React.Component {
 
     handleVendorRemove = (vendor) => {
         const data = this.state;
-        fetch(`https://realestatemanager-4c9ef.firebaseio.com/tenants/${vendor.id}.json`, {
+        fetch(`https://realestatemanager-4c9ef.firebaseio.com/vendors/${vendor.id}.json`, {
             method : 'DELETE',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
