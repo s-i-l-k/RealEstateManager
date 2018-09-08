@@ -16,6 +16,7 @@ body {
   position: fixed;
   background-color: #e9ece5;
   top: 0;
+  z-index: 1;
   .logo {
     width: 15vw;
     background-image: url("../images/home.png");
