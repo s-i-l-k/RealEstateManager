@@ -51,11 +51,15 @@ class Tenants extends React.Component {
     render() {
         return (
             <div className={["container", "forFixed"].join(" ")}>
-                <div className="vendorImg"></div>
-                {this.state.vendors.map(vendor => {
-                    return <VendorCard key={ vendor.id} vendor={ vendor } onClick={(e) => this.editVendor(e)} onDelete={this.handleVendorRemove}/>
-                })}
-                <AddButton onClick={() => this.handleClick()}/>
+                <div className="forDesktop">
+                    <div className="vendorImg"></div>
+                    <div className="cardsPlace">
+                    {this.state.vendors.map(vendor => {
+                        return <VendorCard key={ vendor.id} vendor={ vendor } onClick={(e) => this.editVendor(e)} onDelete={this.handleVendorRemove}/>
+                    })}
+                    <AddButton onClick={() => this.handleClick()}/>
+                    </div>
+                </div>
             </div>
         )
     }

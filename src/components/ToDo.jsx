@@ -23,24 +23,28 @@ class ToDo extends React.Component {
     render(){
         return (
             <div className="forFixed">
-                <div className="toDoImg"></div>
-                <div className="toDoList">
-                    <h2>Lista zadań</h2>
-                    <hr/>
-                    <form className="toDoForm">
-                        Wybierz nieruchomość:
-                        {this.state.buildings.map((building, i) => {
-                            return (
-                                <div className="pick" key={i}>
-                                    <label>
-                                        <input type="radio" value={building.name} checked={this.state.selectedOption == building.name} onChange={this.handleBuildingChange}/>
-                                        {building.name}
-                                    </label>
-                                </div>
-                            )
-                        })}
-                    </form>
-                    <ToDoList id={this.props.match.params.id} selected={this.state.selectedOption}/>
+                <div className="forDesktop">
+                    <div className="toDoImg"></div>
+                    <div className="cardsPlace">
+                        <div className="toDoList">
+                            <h2>Lista zadań</h2>
+                            <hr/>
+                            <form className="toDoForm">
+                                Wybierz nieruchomość:
+                                {this.state.buildings.map((building, i) => {
+                                    return (
+                                        <div className="pick" key={i}>
+                                            <label>
+                                                <input type="radio" value={building.name} checked={this.state.selectedOption == building.name} onChange={this.handleBuildingChange}/>
+                                                {building.name}
+                                            </label>
+                                        </div>
+                                    )
+                                })}
+                            </form>
+                            <ToDoList id={this.props.match.params.id} selected={this.state.selectedOption}/>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

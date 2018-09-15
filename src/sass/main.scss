@@ -176,6 +176,12 @@ body {
   flex-direction: column;
   border-radius: 5%;
   position: relative;
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
+  @media (min-width: 1024px) {
+    width: 40vw;
+  }
   hr {
     border: 2px solid mediumseagreen;
     width: 40vw;
@@ -265,6 +271,11 @@ body {
   background-repeat: no-repeat;
   height: 15vh;
   margin-bottom: 5vh;
+  @media (min-width: 768px) {
+    width: 50vw;
+    min-height: 90vh;
+    background-attachment: fixed;
+  }
 }
 
 .tenantImg {
@@ -274,6 +285,12 @@ body {
   height: 15vh;
   margin-bottom: 5vh;
   background-position-y: 50%;
+  @media (min-width: 768px) {
+    width: 50vw;
+    min-height: 90vh;
+    background-attachment: fixed;
+    background-position-x: 170%;
+  }
 }
 
 .vendorImg {
@@ -283,6 +300,12 @@ body {
   height: 15vh;
   margin-bottom: 5vh;
   background-position-y: 40%;
+  @media (min-width: 768px) {
+    width: 50vw;
+    min-height: 90vh;
+    background-attachment: fixed;
+    background-position-x: 200%;
+  }
 }
 
 .paymentImg {
@@ -292,6 +315,12 @@ body {
   height: 15vh;
   margin-bottom: 5vh;
   background-position-y: 70%;
+  @media (min-width: 768px) {
+    width: 50vw;
+    min-height: 90vh;
+    background-attachment: fixed;
+    background-position-x: 200%;
+  }
 }
 
 .toDoImg {
@@ -301,6 +330,12 @@ body {
   height: 15vh;
   margin-bottom: 5vh;
   background-position-y: 70%;
+  @media (min-width: 768px) {
+    width: 50vw;
+    min-height: 90vh;
+    background-attachment: fixed;
+    background-position-x: 80%;
+  }
 }
 
 .payment {
@@ -316,6 +351,12 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 5vh;
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
+  @media (min-width: 1024px) {
+    width: 40vw;
+  }
   hr {
     border: 2px solid mediumseagreen;
     width: 40vw;
@@ -437,6 +478,12 @@ body {
     font-size: 16px;
     text-align: center;
     color: steelblue;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 40vw;
+    }
+    @media (min-width: 1024px) {
+      width: 30vw;
+    }
   }
 }
 
@@ -452,6 +499,12 @@ body {
   flex-direction: column;
   border-radius: 5%;
   position: relative;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 50vw;
+  }
+  @media (min-width: 1024px) {
+    width: 40vw;
+  }
   p {
     color: black;
     font-size: 18px;
@@ -468,9 +521,31 @@ body {
   }
 }
 
-form {
+.form {
   font-size: 16px;
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
+  @media (min-width: 1024px) {
+    width: 40vw;
+  }
   input {
     margin: 5px;
+  }
+}
+
+.forDesktop {
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row
+  }
+  .cardsPlace {
+    @media (min-width: 768px) and (max-width: 1023px){
+      width: 60vw;
+      padding: 5vw;
+    }
+    @media (min-width: 1024px) {
+      padding: 5vw 10vw;
+    }
   }
 }

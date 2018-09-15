@@ -24,12 +24,16 @@ class Payments extends React.Component {
     render() {
         return (
             <div className={["container", "forFixed"].join(" ")}>
-                <div className="paymentImg"></div>
-                {this.state.buildings.map(((building, i) => {
-                    return <IsPaid key={building.id} building={building} day={this.state.date.getDate()}
-                                       month={this.state.date.getMonth() +1} days={this.daysInMonths(this.state.date.getMonth() +1, this.state.date.getFullYear())}
-                                       year={this.state.date.getFullYear()} today={this.state.date.getDate()} id={building.id}/>
-                }))}
+                <div className="forDesktop">
+                    <div className="paymentImg"></div>
+                    <div className="cardsPlace">
+                    {this.state.buildings.map(((building, i) => {
+                        return <IsPaid key={building.id} building={building} day={this.state.date.getDate()}
+                                        month={this.state.date.getMonth() +1} days={this.daysInMonths(this.state.date.getMonth() +1, this.state.date.getFullYear())}
+                                        year={this.state.date.getFullYear()} today={this.state.date.getDate()} id={building.id}/>
+                    }))}
+                    </div>
+                </div>
             </div>
         )
     }

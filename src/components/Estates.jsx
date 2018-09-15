@@ -52,12 +52,14 @@ class Estates extends React.Component {
 
     render() {
         return (
-            <div className='forFixed'>
+            <div className={["forDesktop", "forFixed"].join(" ")}>
                 <div className="estateImg"></div>
+                <div className="cardsPlace">
                 {this.state.buildings.map(building => {
                     return <BuildingCard key={ building.id } building={ building } onClick={(e) => this.editBuilding(e)} onDelete={this.handleBuildingRemove} />
                 })}
                 <AddButton onClick={() => this.handleClick()}/>
+                </div>
             </div>
         )
     }
