@@ -28,7 +28,7 @@ class BuildingCard extends React.Component {
                     <button onClick={() => this.props.onDelete(this.props.building)} className="deletebtn">Usuń</button>
                     <button><NavLink to="/tenants" className="navButton">Najemcy</NavLink></button>
                     <button><NavLink to="/payments" className="navButton">Płatności</NavLink></button>
-                    <button><NavLink to="/todo" className="navButton">Do zrobienia</NavLink></button>
+                    <button><NavLink to="/todo" className="navButton">Zadania</NavLink></button>
                 </div>
             </div>
         )
